@@ -24,7 +24,7 @@
         .join-btn { display: inline-block; color: #0d6efd; font-weight: bold; text-decoration: none; font-size: 16px; border: 1.5px solid #0d6efd; padding: 8px 25px; border-radius: 20px; transition: 0.2s; cursor: pointer; }
         .join-btn:hover { background: #0d6efd; color: white; }
         
-        /* Floating Add Group Button */
+        /* Floating Button */
         .float-btn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #25d366; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-size: 15px; z-index: 1000; cursor: pointer; }
     </style>
 </head>
@@ -49,7 +49,7 @@
         function handleSmartClick() {
             clickCount++;
             if (clickCount % 2 !== 0) {
-                // 1st, 3rd, 5th click -> Adsterra Ad
+                // 1st, 3rd, 5th click -> Adsterra Direct Link
                 window.open(adLink, '_blank');
             } else {
                 // 2nd, 4th, 6th click -> Real WhatsApp Group Link
@@ -57,70 +57,62 @@
             }
         }
 
-        // Relevant images mapped directly to group categories
-        const groupData = [
-            { 
-                name: "Real Girls Chat & Fun", 
-                tag: "GIRLS", 
-                dp: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Cute Girls Chatting Hub", 
-                tag: "GIRLS", 
-                dp: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "PUBG Mobile Custom Rooms", 
-                tag: "GAMING", 
-                dp: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Free Fire UC & Diamonds", 
-                tag: "GAMING", 
-                dp: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Online Earning Daily $50", 
-                tag: "EARNING", 
-                dp: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "USDT Earning & Crypto Signals", 
-                tag: "EARNING", 
-                dp: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Sub4Sub YouTube Booster", 
-                tag: "PROMOTION", 
-                dp: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Global Friendship Club", 
-                tag: "FRIENDSHIP", 
-                dp: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Pakistan & India Friends", 
-                tag: "CHAT", 
-                dp: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=200&q=80" 
-            },
-            { 
-                name: "Charity & Donation Support", 
-                tag: "OTHER", 
-                dp: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=200&q=80" 
-            }
+        // Image Pools for Category Matching
+        const girlsImages = [
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80"
+        ];
+
+        const gamingImages = [
+            "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=200&q=80"
+        ];
+
+        const earningImages = [
+            "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=200&q=80"
+        ];
+
+        const friendshipImages = [
+            "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=200&q=80",
+            "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80"
+        ];
+
+        const groupTemplates = [
+            { name: "Real Girls Chat & Fun", tag: "GIRLS", pool: girlsImages },
+            { name: "Cute Girls Friendship", tag: "GIRLS", pool: girlsImages },
+            { name: "Desi Girls Chat Lounge", tag: "GIRLS", pool: girlsImages },
+            { name: "PUBG Custom Rooms", tag: "GAMING", pool: gamingImages },
+            { name: "Free Fire Diamonds Hub", tag: "GAMING", pool: gamingImages },
+            { name: "Online Earning Daily $50", tag: "EARNING", pool: earningImages },
+            { name: "USDT & Crypto Signals", tag: "EARNING", pool: earningImages },
+            { name: "Sub4Sub YouTube Booster", tag: "PROMOTION", pool: earningImages },
+            { name: "Global Friends Community", tag: "FRIENDSHIP", pool: friendshipImages },
+            { name: "Pakistan & India Gossip", tag: "CHAT", pool: friendshipImages }
         ];
 
         const container = document.getElementById('cardsContainer');
         let cardsHTML = '';
 
         for (let i = 0; i < 1000; i++) {
-            let item = groupData[i % groupData.length];
+            let item = groupTemplates[i % groupTemplates.length];
+            
+            // Pick a unique image from category pool dynamically
+            let imageIndex = Math.floor(i / groupTemplates.length) % item.pool.length;
+            let dpUrl = item.pool[imageIndex];
 
             cardsHTML += `
                 <div class="card">
                     <span class="badge">${item.tag}</span>
-                    <img src="${item.dp}" class="avatar" alt="DP">
+                    <img src="${dpUrl}" class="avatar" alt="DP">
                     <div class="group-title">${item.name}</div>
                     <div class="join-btn" onclick="handleSmartClick()">Join Now</div>
                 </div>
