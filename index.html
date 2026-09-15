@@ -57,32 +57,70 @@
             }
         }
 
-        const groupNames = [
-            { name: "Global Friendship Club", tag: "FRIENDSHIP" },
-            { name: "Real Girls Chat & Fun", tag: "GIRLS" },
-            { name: "Online Earning Daily $50", tag: "EARNING" },
-            { name: "Sub4Sub YouTube Booster", tag: "PROMOTION" },
-            { name: "Girls Friendship Group", tag: "GIRLS" },
-            { name: "PUBG Mobile Room Matches", tag: "GAMING" },
-            { name: "Pakistan & India Friends", tag: "CHAT" },
-            { name: "Cute Girls Chatting Hub", tag: "GIRLS" },
-            { name: "Desi Gossip & Fun Lounge", tag: "FRIENDSHIP" },
-            { name: "USDT Earning & Crypto Signals", tag: "EARNING" },
-            { name: "Active Chatting Community", tag: "CHAT" },
-            { name: "Charity & Donation Support", tag: "OTHER" }
+        // Relevant images mapped directly to group categories
+        const groupData = [
+            { 
+                name: "Real Girls Chat & Fun", 
+                tag: "GIRLS", 
+                dp: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Cute Girls Chatting Hub", 
+                tag: "GIRLS", 
+                dp: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "PUBG Mobile Custom Rooms", 
+                tag: "GAMING", 
+                dp: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Free Fire UC & Diamonds", 
+                tag: "GAMING", 
+                dp: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Online Earning Daily $50", 
+                tag: "EARNING", 
+                dp: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "USDT Earning & Crypto Signals", 
+                tag: "EARNING", 
+                dp: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Sub4Sub YouTube Booster", 
+                tag: "PROMOTION", 
+                dp: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Global Friendship Club", 
+                tag: "FRIENDSHIP", 
+                dp: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Pakistan & India Friends", 
+                tag: "CHAT", 
+                dp: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=200&q=80" 
+            },
+            { 
+                name: "Charity & Donation Support", 
+                tag: "OTHER", 
+                dp: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=200&q=80" 
+            }
         ];
 
         const container = document.getElementById('cardsContainer');
         let cardsHTML = '';
 
-        for (let i = 1; i <= 1000; i++) {
-            let item = groupNames[i % groupNames.length];
-            let randomPhotoUrl = `https://picsum.photos/seed/girlDP${i}/150/150`;
+        for (let i = 0; i < 1000; i++) {
+            let item = groupData[i % groupData.length];
 
             cardsHTML += `
                 <div class="card">
                     <span class="badge">${item.tag}</span>
-                    <img src="${randomPhotoUrl}" class="avatar" alt="DP">
+                    <img src="${item.dp}" class="avatar" alt="DP">
                     <div class="group-title">${item.name}</div>
                     <div class="join-btn" onclick="handleSmartClick()">Join Now</div>
                 </div>
