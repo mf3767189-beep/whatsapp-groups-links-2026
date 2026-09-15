@@ -3,94 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active WhatsApp Group Links Directory 2026</title>
+    <title>1000+ Active WhatsApp Group Links Directory 2026</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ece5dd; margin: 0; padding: 15px; text-align: center; }
         .header { background-color: #075e54; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         h1 { margin: 0; font-size: 22px; }
         p { font-size: 14px; margin-top: 5px; }
-        .category-title { background: #128c7e; color: white; padding: 10px; border-radius: 5px; font-weight: bold; margin-top: 25px; text-align: left; padding-left: 15px; }
         .grid-container { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
-        .btn { display: flex; justify-content: space-between; align-items: center; background-color: #25d366; color: white; padding: 12px 15px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: 0.2s; cursor: pointer; }
-        .btn:hover { background-color: #128c7e; transform: translateY(-2px); }
+        .btn { display: flex; justify-content: space-between; align-items: center; background-color: #25d366; color: white; padding: 12px 15px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer; }
+        .btn:hover { background-color: #128c7e; }
         .btn-join { background-color: white; color: #075e54; padding: 5px 12px; border-radius: 20px; font-size: 12px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>🔥 50+ Active WhatsApp Group Links (2026)</h1>
-        <p>Daily Updated Directory - Join Unlimited Groups</p>
+        <h1>🔥 1000+ Active WhatsApp Group Links (2026)</h1>
+        <p>Click any group below to join instantly</p>
     </div>
 
-    <!-- Your Adsterra Direct Link -->
+    <div class="grid-container" id="groupList"></div>
+
     <script>
         const adLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
-        function openAd() {
-            window.open(adLink, '_blank');
+        const targetGroupLink = "https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
+        let clickCount = 0;
+
+        function handleSmartClick() {
+            clickCount++;
+            if (clickCount % 2 !== 0) {
+                // 1st, 3rd, 5th click -> Adsterra Ad
+                window.open(adLink, '_blank');
+            } else {
+                // 2nd, 4th, 6th click -> WhatsApp Group Link
+                window.open(targetGroupLink, '_blank');
+            }
         }
+
+        // Generate 1000 Groups Dynamically
+        const categories = [
+            "Online Earning & Crypto Group", 
+            "Sub4Sub YouTube Booster", 
+            "PUBG & Free Fire Gaming", 
+            "Friendship & Global Chat", 
+            "Jobs & Course Alert"
+        ];
+
+        const container = document.getElementById('groupList');
+        let htmlContent = '';
+
+        for (let i = 1; i <= 1000; i++) {
+            let catName = categories[i % categories.length];
+            htmlContent += `
+                <a onclick="handleSmartClick()" class="btn">
+                    <span>🔥 ${catName} #${i}</span> 
+                    <span class="btn-join">Join</span>
+                </a>`;
+        }
+
+        container.innerHTML = htmlContent;
     </script>
 
-    <!-- Category 1: Online Earning Groups -->
-    <div class="category-title">💰 Online Earning & Crypto Groups</div>
-    <div class="grid-container">
-        <a onclick="openAd()" class="btn"><span>💰 Daily Real Earning Group 1</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🚀 Crypto Trading Signals 2026</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>📈 Binance Free Signals Pack</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>💸 Online Business Community</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🔥 USDT Earning Loot Deals</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🌐 Freelancing Jobs Official</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>📱 Copy-Paste Earning Method</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>💡 Affiliate Marketing Club</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎯 Work From Home Jobs</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>💎 Dollar Earning Tricks</span> <span class="btn-join">Join</span></a>
-    </div>
-
-    <!-- Category 2: YouTube & Social Media -->
-    <div class="category-title">🔴 YouTube Sub4Sub & Promotion</div>
-    <div class="grid-container">
-        <a onclick="openAd()" class="btn"><span>🔴 Permanent Sub4Sub Group 1</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>⏱️ 4000 WatchTime Helper</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>👍 YouTube Like & Comment</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>📊 1K Subscribers Booster</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎵 TikTok Followers Exchange</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>📸 Instagram Viral Reels</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>📘 Facebook Group Promotion</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎥 Shorts Creator Hub</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>⚡ Monetization Support</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🚀 Organic Views Growth</span> <span class="btn-join">Join</span></a>
-    </div>
-
-    <!-- Category 3: Gaming & PUBG -->
-    <div class="category-title">🎮 Gaming, PUBG & Free Fire</div>
-    <div class="grid-container">
-        <a onclick="openAd()" class="btn"><span>🎮 PUBG Mobile Custom Rooms</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🔥 Free Fire UC & Diamonds</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🏆 Tournament Esports Hub</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎯 Call Of Duty Mobile Players</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🕹️ PC Gaming Deals & Tricks</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>👾 GTA 5 & Android Mods</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>👑 PUBG Rank Push Team</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>💥 FF Guild Recruiting</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎁 Weekly Gaming Giveaway</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🌐 Global Gamers Chat</span> <span class="btn-join">Join</span></a>
-    </div>
-
-    <!-- Category 4: Friendship & Chatting -->
-    <div class="category-title">💬 Friendship & Global Chat</div>
-    <div class="grid-container">
-        <a onclick="openAd()" class="btn"><span>💬 Active Chatting Room</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🌐 Global Friends Community</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎵 Music & Poetry Lovers</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>😂 Funny Memes & Jokes</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🎬 Movie Streaming Direct</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🤝 Timepass Chat Club</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>✨ Status & Reels Share</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🌍 Overseas Pak-Ind Group</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>☕ Night Owls Chatting</span> <span class="btn-join">Join</span></a>
-        <a onclick="openAd()" class="btn"><span>🔥 Daily Motivational Quotes</span> <span class="btn-join">Join</span></a>
-    </div>
-
 </body>
-            </html>
-            
+</html>
