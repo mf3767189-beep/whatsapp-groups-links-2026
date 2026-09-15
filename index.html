@@ -12,7 +12,7 @@
         
         .container { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
         
-        /* Card Design like screenshot */
+        /* Card Design */
         .card { background: white; border-radius: 12px; padding: 20px 15px; border: 1px solid #e1e8ed; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: relative; text-align: center; }
         
         .badge { position: absolute; top: 15px; left: 15px; background-color: #0d6efd; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
@@ -57,25 +57,19 @@
             }
         }
 
-        // Random Avatars (Girls, Friendship, Earning, Community)
-        const dps = [
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
-            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80",
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-            "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80"
-        ];
-
         const groupNames = [
             { name: "Global Friendship Club", tag: "FRIENDSHIP" },
             { name: "Real Girls Chat & Fun", tag: "GIRLS" },
             { name: "Online Earning Daily $50", tag: "EARNING" },
             { name: "Sub4Sub YouTube Booster", tag: "PROMOTION" },
-            { name: "Charity & Help Needy", tag: "OTHER" },
+            { name: "Girls Friendship Group", tag: "GIRLS" },
             { name: "PUBG Mobile Room Matches", tag: "GAMING" },
             { name: "Pakistan & India Friends", tag: "CHAT" },
-            { name: "Career Growth & Jobs 2026", tag: "CAREER" }
+            { name: "Cute Girls Chatting Hub", tag: "GIRLS" },
+            { name: "Desi Gossip & Fun Lounge", tag: "FRIENDSHIP" },
+            { name: "USDT Earning & Crypto Signals", tag: "EARNING" },
+            { name: "Active Chatting Community", tag: "CHAT" },
+            { name: "Charity & Donation Support", tag: "OTHER" }
         ];
 
         const container = document.getElementById('cardsContainer');
@@ -83,13 +77,13 @@
 
         for (let i = 1; i <= 1000; i++) {
             let item = groupNames[i % groupNames.length];
-            let dp = dps[i % dps.length];
-            
+            let randomPhotoUrl = `https://picsum.photos/seed/girlDP${i}/150/150`;
+
             cardsHTML += `
                 <div class="card">
                     <span class="badge">${item.tag}</span>
-                    <img src="${dp}" class="avatar" alt="DP">
-                    <div class="group-title">${item.name} #${i}</div>
+                    <img src="${randomPhotoUrl}" class="avatar" alt="DP">
+                    <div class="group-title">${item.name}</div>
                     <div class="join-btn" onclick="handleSmartClick()">Join Now</div>
                 </div>
             `;
