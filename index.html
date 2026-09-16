@@ -12,9 +12,21 @@
         .header h1 { margin: 0; font-size: 22px; font-weight: 800; }
         .header p { margin: 6px 0 0 0; font-size: 13px; opacity: 0.95; }
         
+        /* Visitor Counter Box */
+        .visitor-box {
+            background: rgba(0, 0, 0, 0.25);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #25d366;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
         .container { display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: 0 auto; }
         
-        /* Modern Clean Line / Row Design (No DP / No Avatars) */
         .list-card { 
             background: white; 
             border-radius: 12px; 
@@ -26,7 +38,7 @@
             justify-content: space-between; 
             text-align: left;
             gap: 10px;
-            border-left: 5px solid #25d366; /* Left Color Accent Line */
+            border-left: 5px solid #25d366; 
         }
 
         .left-info { flex: 1; min-width: 0; }
@@ -37,7 +49,6 @@
 
         .group-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        /* High-CTR Compact Join Button */
         .join-btn { 
             background: linear-gradient(135deg, #25d366, #128c7e); 
             color: white; 
@@ -69,6 +80,11 @@
     <div class="header">
         <h1>🔥 1000+ Active WhatsApp Groups</h1>
         <p>Direct Join Active Indian, Pakistani & Global Groups</p>
+        
+        <!-- Live Visitor Counter Badge -->
+        <div class="visitor-box">
+            👥 Total Visits: <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fwhatsapp-groups-list&count_bg=%2325D366&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=true"/>
+        </div>
     </div>
 
     <div class="container" id="cardsContainer"></div>
@@ -196,5 +212,4 @@
     </script>
 
 </body>
-    </html>
-    
+</html>
