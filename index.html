@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>1000+ Active WhatsApp Group Links 2026</title>
 
-    <link rel="icon" type="image/png"
-        href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    <!-- WhatsApp favicon -->
+    <link rel="icon"
+          type="image/png"
+          href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
             background-color: #f4f6f9;
             margin: 0;
             padding: 15px;
@@ -49,7 +52,7 @@
         }
 
         .badge-pill {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             backdrop-filter: blur(5px);
             color: #fff;
             padding: 6px 12px;
@@ -151,6 +154,7 @@
             border: none;
         }
 
+        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -227,79 +231,161 @@
 
 <body>
 
+    <!-- HEADER -->
     <div class="header">
-        <h1>1000+ Active WhatsApp Group Links 2026</h1>
-        <p>Explore & Join Official Active Communities & Chat Hubs</p>
+
+        <h1>
+            1000+ Active WhatsApp Group Links 2026
+        </h1>
+
+        <p>
+            Explore & Join Active Communities & Chat Hubs
+        </p>
 
         <div class="trust-badges">
-            <span class="badge-pill">✅ 100% Verified</span>
             <span class="badge-pill">⚡ Fast Join</span>
-            <span class="badge-pill">🔒 Spam Free</span>
+            <span class="badge-pill">🔒 Community Safe</span>
             <span class="badge-pill">🔥 Daily Updated</span>
         </div>
+
     </div>
 
+
+    <!-- GROUP CARDS -->
     <div class="container" id="cardsContainer"></div>
 
-    <button class="float-btn" onclick="openAddGroupModal()">
+
+    <!-- ADD GROUP BUTTON -->
+    <button class="float-btn"
+            onclick="openAddGroupModal()">
+
         💬 Add Your Group
+
     </button>
 
-    <div class="modal-overlay" id="addGroupModal">
+
+    <!-- ADD GROUP MODAL -->
+    <div class="modal-overlay"
+         id="addGroupModal">
+
         <div class="modal-box">
 
             <span class="close-modal"
-                onclick="closeAddGroupModal()">&times;</span>
+                  onclick="closeAddGroupModal()">
+                &times;
+            </span>
 
-            <h2>Add Your WhatsApp Group</h2>
+            <h2>
+                Add Your WhatsApp Group
+            </h2>
 
             <form id="groupForm"
-                onsubmit="handleUserSubmitGroup(event)">
+                  onsubmit="handleUserSubmitGroup(event)">
 
-                <label>Group Name:</label>
-                <input type="text"
+                <label>
+                    Group Name:
+                </label>
+
+                <input
+                    type="text"
                     id="userGroupName"
                     placeholder="e.g. Desi Friends Chat"
                     required>
 
-                <label>Category:</label>
+
+                <label>
+                    Category:
+                </label>
+
                 <select id="userGroupCategory">
-                    <option value="GIRLS">GIRLS</option>
-                    <option value="GAMING">GAMING</option>
-                    <option value="EARNING">EARNING</option>
-                    <option value="FRIENDSHIP">FRIENDSHIP</option>
-                    <option value="CHAT">CHAT</option>
-                    <option value="PROMOTION">PROMOTION</option>
+
+                    <option value="GIRLS">
+                        GIRLS
+                    </option>
+
+                    <option value="GAMING">
+                        GAMING
+                    </option>
+
+                    <option value="EARNING">
+                        EARNING
+                    </option>
+
+                    <option value="FRIENDSHIP">
+                        FRIENDSHIP
+                    </option>
+
+                    <option value="CHAT">
+                        CHAT
+                    </option>
+
+                    <option value="PROMOTION">
+                        PROMOTION
+                    </option>
+
                 </select>
 
-                <label>WhatsApp Group Link:</label>
-                <input type="url"
+
+                <label>
+                    WhatsApp Group Link:
+                </label>
+
+                <input
+                    type="url"
                     id="userGroupLink"
                     placeholder="https://chat.whatsapp.com/..."
                     required>
 
-                <label>Image DP URL (Optional):</label>
-                <input type="url"
-                    id="userGroupDp"
-                    placeholder="Leave blank for auto category photo">
 
-                <button type="submit" class="submit-btn">
+                <label>
+                    Image DP URL (Optional):
+                </label>
+
+                <input
+                    type="url"
+                    id="userGroupDp"
+                    placeholder="Leave blank for automatic DP">
+
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+
                     Submit & Add Group
+
                 </button>
 
             </form>
+
         </div>
+
     </div>
 
+
     <script>
+
+        /* =====================================================
+           YOUR ORIGINAL AD LINK
+        ===================================================== */
 
         const adLink =
             "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
 
+
+        /* =====================================================
+           YOUR ORIGINAL WHATSAPP GROUP LINK
+        ===================================================== */
+
         const defaultUserLink =
             "https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
+
+        /* =====================================================
+           CLICK COUNTER
+        ===================================================== */
+
         let clickCounts = {};
+
 
         function handleSmartClick(targetUrl) {
 
@@ -309,208 +395,400 @@
 
             clickCounts[targetUrl]++;
 
+
+            /*
+              1st click = Advertisement
+              2nd click = WhatsApp
+            */
+
             if (clickCounts[targetUrl] % 2 !== 0) {
-                window.open(adLink, '_blank');
+
+                window.open(
+                    adLink,
+                    "_blank"
+                );
+
             } else {
-                window.open(targetUrl, '_blank');
+
+                window.open(
+                    targetUrl,
+                    "_blank"
+                );
+
             }
         }
 
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
         function openAddGroupModal() {
-            document.getElementById('addGroupModal').style.display = 'flex';
+
+            document.getElementById(
+                "addGroupModal"
+            ).style.display = "flex";
+
         }
 
+
         function closeAddGroupModal() {
-            document.getElementById('addGroupModal').style.display = 'none';
+
+            document.getElementById(
+                "addGroupModal"
+            ).style.display = "none";
+
         }
 
 
         /* =====================================================
-           GROUP DATA
+           GROUP LIST
         ===================================================== */
 
         const baseCategories = [
-            { name: "Real Girls Chat & Fun", tag: "GIRLS" },
-            { name: "Cute Girls Friendship", tag: "GIRLS" },
-            { name: "Desi Girls Chat Lounge", tag: "GIRLS" },
 
-            { name: "PUBG Mobile Custom Rooms", tag: "GAMING" },
-            { name: "Free Fire Diamonds Hub", tag: "GAMING" },
+            {
+                name: "Real Girls Chat & Fun",
+                tag: "GIRLS"
+            },
 
-            { name: "Online Earning Daily $50", tag: "EARNING" },
-            { name: "USDT & Crypto Signals", tag: "EARNING" },
+            {
+                name: "Cute Girls Friendship",
+                tag: "GIRLS"
+            },
 
-            { name: "Global Friends Community", tag: "FRIENDSHIP" },
-            { name: "Pakistan & India Chat Hub", tag: "CHAT" },
+            {
+                name: "Desi Girls Chat Lounge",
+                tag: "GIRLS"
+            },
 
-            { name: "Sub4Sub YouTube Booster", tag: "PROMOTION" }
+            {
+                name: "PUBG Mobile Custom Rooms",
+                tag: "GAMING"
+            },
+
+            {
+                name: "Free Fire Diamonds Hub",
+                tag: "GAMING"
+            },
+
+            {
+                name: "Online Earning Daily $50",
+                tag: "EARNING"
+            },
+
+            {
+                name: "USDT & Crypto Signals",
+                tag: "EARNING"
+            },
+
+            {
+                name: "Global Friends Community",
+                tag: "FRIENDSHIP"
+            },
+
+            {
+                name: "Pakistan & India Chat Hub",
+                tag: "CHAT"
+            },
+
+            {
+                name: "Sub4Sub YouTube Booster",
+                tag: "PROMOTION"
+            }
+
         ];
 
 
+        const container =
+            document.getElementById(
+                "cardsContainer"
+            );
+
+
         /* =====================================================
-           NEW IMAGE SYSTEM
+           IMAGE SYSTEM
            
-           Every group gets:
-           1. Relevant search keywords
-           2. Unique lock number
-           3. Real photo source
-           
-           Same image is avoided by using a different lock.
+           Different seed = different photo request.
+           Category keyword is included in the seed.
         ===================================================== */
 
-        function getPhotoKeywords(groupName, category) {
+        const categoryImages = {
 
-            const categoryKeywords = {
+            GIRLS: [
+                "girls-friends",
+                "women-friends",
+                "female-friends",
+                "girls-friendship",
+                "friends-women",
+                "women-smile",
+                "female-friendship",
+                "girls-community"
+            ],
 
-                GIRLS:
-                    "women friends friendship portrait",
+            GAMING: [
+                "gaming",
+                "gamer",
+                "esports",
+                "gaming-setup",
+                "computer-gaming",
+                "mobile-gaming",
+                "game-player",
+                "gaming-room"
+            ],
 
-                GAMING:
-                    "gaming gamer esports computer game",
+            EARNING: [
+                "business",
+                "finance",
+                "money-business",
+                "online-business",
+                "startup",
+                "technology-business",
+                "finance-office",
+                "business-work"
+            ],
 
-                EARNING:
-                    "business money finance cryptocurrency technology",
+            FRIENDSHIP: [
+                "friends",
+                "friendship",
+                "friends-group",
+                "people-friends",
+                "community",
+                "smiling-friends",
+                "friend-group",
+                "people-together"
+            ],
 
-                FRIENDSHIP:
-                    "friends friendship people smiling",
+            CHAT: [
+                "people-chat",
+                "communication",
+                "friends-talking",
+                "social-community",
+                "people",
+                "community-chat",
+                "friends-together",
+                "social-friends"
+            ],
 
-                CHAT:
-                    "friends people communication social",
+            PROMOTION: [
+                "social-media",
+                "marketing",
+                "digital-marketing",
+                "promotion",
+                "social-media-marketing",
+                "business-marketing",
+                "online-marketing",
+                "digital-business"
+            ]
 
-                PROMOTION:
-                    "social media marketing promotion technology"
-            };
-
-            const keywords =
-                categoryKeywords[category] ||
-                "people community friendship";
-
-            return keywords;
-        }
-
-
-        function getUniqueRelatedPhoto(groupName, category, uniqueNumber) {
-
-            const keywords =
-                getPhotoKeywords(groupName, category);
-
-            /*
-              LoremFlickr uses real photographs.
-              "lock" makes each card request a different image.
-            */
-
-            return "https://loremflickr.com/300/300/" +
-                encodeURIComponent(keywords) +
-                "?lock=" + uniqueNumber;
-        }
-
-
-        const container =
-            document.getElementById('cardsContainer');
+        };
 
 
         /* =====================================================
-           CREATE 1000 GROUP CARDS
+           GET UNIQUE DP
+        ===================================================== */
+
+        function getGroupDP(category, groupNumber) {
+
+            const list =
+                categoryImages[category] ||
+                categoryImages.CHAT;
+
+
+            const keyword =
+                list[
+                    (groupNumber - 1) %
+                    list.length
+                ];
+
+
+            /*
+              Unique seed for every card.
+              Browser requests a different image.
+            */
+
+            const uniqueSeed =
+                keyword +
+                "-2026-group-" +
+                groupNumber;
+
+
+            return (
+                "https://picsum.photos/seed/" +
+                encodeURIComponent(uniqueSeed) +
+                "/200/200"
+            );
+        }
+
+
+        /* =====================================================
+           CREATE 1000 GROUPS
         ===================================================== */
 
         function renderInitialCards() {
 
-            let cardsHTML = '';
+            let cardsHTML = "";
 
-            for (let i = 1; i <= 1000; i++) {
 
-                let item =
-                    baseCategories[(i - 1) % baseCategories.length];
+            for (
+                let i = 1;
+                i <= 1000;
+                i++
+            ) {
 
-                /*
-                  Each card gets its own unique photo lock.
-                  The category decides what type of photo appears.
-                */
+                const item =
+                    baseCategories[
+                        (i - 1) %
+                        baseCategories.length
+                    ];
 
-                let selectedDp =
-                    getUniqueRelatedPhoto(
-                        item.name,
+
+                const selectedDp =
+                    getGroupDP(
                         item.tag,
                         i
                     );
 
+
                 cardsHTML += `
+
                     <div class="card">
 
                         <span class="badge">
                             ${item.tag}
                         </span>
 
+
                         <img
                             src="${selectedDp}"
                             class="avatar"
                             loading="lazy"
                             alt="${item.name} DP"
+                            onerror="
+                                this.src='https://picsum.photos/seed/fallback-${i}/200/200'
+                            "
                         >
+
 
                         <div class="group-title">
                             ${item.name}
                         </div>
 
+
                         <div
                             class="join-btn"
                             onclick="handleSmartClick('${defaultUserLink}')">
+
                             Join Now
+
                         </div>
 
                     </div>
+
                 `;
             }
 
-            container.innerHTML = cardsHTML;
+
+            container.innerHTML =
+                cardsHTML;
+
         }
 
 
         /* =====================================================
-           USER ADDED GROUP
+           USER GROUP DP
+        ===================================================== */
+
+        function getUserGroupDP(
+            groupName,
+            category
+        ) {
+
+            const cleanName =
+                groupName
+                    .toLowerCase()
+                    .replace(
+                        /[^a-z0-9]+/g,
+                        "-"
+                    );
+
+
+            const uniqueSeed =
+                "user-" +
+                category.toLowerCase() +
+                "-" +
+                cleanName +
+                "-" +
+                Date.now();
+
+
+            return (
+                "https://picsum.photos/seed/" +
+                encodeURIComponent(uniqueSeed) +
+                "/200/200"
+            );
+
+        }
+
+
+        /* =====================================================
+           ADD USER GROUP
         ===================================================== */
 
         function handleUserSubmitGroup(e) {
 
             e.preventDefault();
 
+
             const name =
-                document.getElementById('userGroupName').value;
+                document.getElementById(
+                    "userGroupName"
+                ).value;
+
 
             const category =
-                document.getElementById('userGroupCategory').value;
+                document.getElementById(
+                    "userGroupCategory"
+                ).value;
+
 
             const link =
-                document.getElementById('userGroupLink').value;
+                document.getElementById(
+                    "userGroupLink"
+                ).value;
+
 
             let dp =
-                document.getElementById('userGroupDp').value;
+                document.getElementById(
+                    "userGroupDp"
+                ).value;
 
 
             /*
-              If user does not provide a DP,
-              automatically create a category-related
-              unique photo.
+              اگر user نے DP نہیں دی،
+              automatic unique image لگے گی۔
             */
 
             if (!dp) {
 
-                const uniqueNumber =
-                    Date.now();
-
                 dp =
-                    getUniqueRelatedPhoto(
+                    getUserGroupDP(
                         name,
-                        category,
-                        uniqueNumber
+                        category
                     );
+
             }
 
 
             const newCard =
-                document.createElement('div');
+                document.createElement(
+                    "div"
+                );
 
-            newCard.className = 'card';
+
+            newCard.className =
+                "card";
+
 
             newCard.innerHTML = `
 
@@ -518,23 +796,33 @@
                     NEW
                 </span>
 
+
                 <img
                     src="${dp}"
                     class="avatar"
                     alt="${name} DP"
                 >
 
+
                 <div class="group-title">
                     ${name}
                 </div>
 
+
                 <div
                     class="join-btn"
                     onclick="handleSmartClick('${link}')">
+
                     Join Now
+
                 </div>
+
             `;
 
+
+            /*
+              New group goes to top.
+            */
 
             container.insertBefore(
                 newCard,
@@ -544,23 +832,24 @@
 
             closeAddGroupModal();
 
+
             document.getElementById(
-                'groupForm'
+                "groupForm"
             ).reset();
 
 
+            /*
+              Original behavior:
+              Open ad after submitting group.
+            */
+
             window.open(
                 adLink,
-                '_blank'
+                "_blank"
             );
+
         }
 
 
-        /* Start */
-
-        renderInitialCards();
-
-    </script>
-
-</body>
-</html>
+        /* =====================================================
+           START PAG
