@@ -3,290 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Group Links 2026 - 6,799+ Active Groups</title>
+    <title>WhatsApp Group Links 2026</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #f7f9fa; color: #1c1e21; }
 
-        /* Navigation Bar */
-        .navbar {
-            background-color: #15803d; color: white; padding: 14px 20px;
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100;
-        }
-        .brand { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .brand-icon { background: white; color: #15803d; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-
-        /* Hero Green Section */
+        .navbar { background-color: #15803d; color: white; padding: 14px 20px; font-size: 18px; font-weight: bold; }
+        
         .hero {
-            background-color: #15803d; color: white; padding: 20px 16px 30px;
-            text-align: center; border-bottom-left-radius: 24px; border-bottom-right-radius: 24px;
+            background-color: #15803d; color: white; padding: 25px 16px 30px;
+            text-align: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
         }
-        .badge {
-            background: rgba(255, 255, 255, 0.15); font-size: 12px; padding: 6px 14px;
-            border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .hero h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
-        .hero h2 { font-size: 18px; color: #bbf7d0; margin-bottom: 12px; font-weight: 600; }
-        .hero p { font-size: 13px; color: #e2e8f0; line-height: 1.4; max-width: 500px; margin: 0 auto 20px; opacity: 0.9; }
+        .hero h1 { font-size: 22px; margin-bottom: 6px; }
+        .hero h2 { font-size: 16px; color: #bbf7d0; margin-bottom: 12px; }
+        .hero p { font-size: 13px; opacity: 0.9; max-width: 400px; margin: 0 auto 15px; }
 
-        /* Search Bar */
-        .search-container { max-width: 450px; margin: 0 auto 20px; position: relative; }
         .search-input {
-            width: 100%; padding: 14px 20px 14px 45px; border-radius: 30px; border: none;
-            font-size: 14px; outline: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%; max-width: 400px; padding: 12px 18px; border-radius: 25px; border: none;
+            font-size: 14px; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 16px; }
 
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 450px; margin: 0 auto; }
-        .stat-card {
-            background: rgba(255, 255, 255, 0.12); padding: 12px 8px; border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
-        }
-        .stat-card h3 { font-size: 16px; font-weight: 800; }
-        .stat-card p { font-size: 11px; margin: 2px 0 0; color: #dcfce7; }
+        .main-body { max-width: 480px; margin: 0 auto; padding: 20px 15px; }
+        .section-title { font-size: 14px; font-weight: 800; color: #15803d; margin-bottom: 12px; text-transform: uppercase; }
 
-        /* Main Content Container */
-        .main-body { max-width: 500px; margin: 0 auto; padding: 20px 16px; }
-
-        /* Popular Categories Section */
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-        .section-title { font-size: 15px; font-weight: 800; color: #15803d; letter-spacing: 0.5px; text-transform: uppercase; }
-        .view-all { font-size: 13px; color: #15803d; text-decoration: none; font-weight: 600; }
-
-        .categories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
-        .cat-card {
-            background: white; padding: 10px 14px; border-radius: 30px; display: flex;
-            align-items: center; gap: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            cursor: pointer; transition: 0.2s;
-        }
-        .cat-card:hover { border-color: #15803d; }
-        .cat-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .cat-name { font-size: 14px; font-weight: 700; color: #334155; }
-
-        /* Filter Tabs */
-        .tabs-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; scrollbar-width: none; }
-        .tabs-container::-webkit-scrollbar { display: none; }
-        .tab-btn {
-            background: white; border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 20px;
-            font-size: 13px; font-weight: 600; color: #475569; white-space: nowrap; cursor: pointer;
-        }
-        .tab-btn.active { background: #15803d; color: white; border-color: #15803d; }
-
-        /* Group Cards Section */
-        .groups-list { display: flex; flex-direction: column; gap: 14px; }
+        .groups-list { display: flex; flex-direction: column; gap: 12px; }
         .group-item {
-            background: white; border-radius: 16px; padding: 16px; border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            background: white; border-radius: 12px; padding: 15px; border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .group-item-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-        .group-item-sub { font-size: 12px; color: #64748b; margin-bottom: 14px; display: flex; align-items: center; gap: 4px; }
-        .btn-join-now {
-            background-color: #15803d; color: white; width: 100%; border: none; padding: 12px 0;
-            border-radius: 24px; font-size: 14px; font-weight: 700; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s;
+        .group-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+        .group-sub { font-size: 12px; color: #64748b; margin-bottom: 12px; }
+        .btn-join {
+            background-color: #15803d; color: white; width: 100%; border: none; padding: 11px 0;
+            border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; text-align: center;
         }
-        .btn-join-now:hover { background-color: #166534; }
 
-        /* Processing Popup */
+        /* Popup */
         .popup-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6);
             display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
         }
-        .popup-card {
-            background: white; border-radius: 20px; padding: 25px; text-align: center; width: 100%; max-width: 320px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+        .popup-card { background: white; border-radius: 16px; padding: 25px; text-align: center; width: 100%; max-width: 300px; }
         .loader {
             border: 4px solid #f3f3f3; border-top: 4px solid #15803d; border-radius: 50%;
-            width: 36px; height: 36px; animation: spin 0.8s linear infinite; margin: 0 auto 15px;
+            width: 30px; height: 30px; animation: spin 0.8s linear infinite; margin: 0 auto 12px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <div class="brand"><div class="brand-icon">💬</div> JoinChatGroups</div>
-    <div style="font-size: 20px;">☰</div>
-</div>
+<div class="navbar">💬 JoinChatGroups</div>
 
-<!-- Hero Section -->
 <div class="hero">
-    <div class="badge">● Updated Daily — New Groups Added Every Day</div>
     <h1>WhatsApp Group Links 2026</h1>
     <h2>6,799+ Active Invite Links</h2>
-    <p>JoinChatGroups.com — the #1 directory for WhatsApp group invite links. Find groups for cricket, jobs, movies, education, crypto, trading, gaming, and more.</p>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search groups by name or category...">
-    </div>
-
-    <!-- Stats -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <h3>6,799+</h3>
-            <p>Active Groups</p>
-        </div>
-        <div class="stat-card">
-            <h3>16+</h3>
-            <p>Categories</p>
-        </div>
-        <div class="stat-card">
-            <h3>50+</h3>
-            <p>New Daily</p>
-        </div>
-    </div>
+    <p>Find & join verified WhatsApp groups for online earning, crypto, gaming, and friendship.</p>
+    <input type="text" class="search-input" placeholder="Search group by name..." id="searchInput" onkeyup="filterGroups()">
 </div>
 
-<!-- Main Body -->
 <div class="main-body">
+    <div class="section-title">Active Invite Links</div>
+    <div class="groups-list" id="groupsList">
+        
+        <div class="group-item">
+            <div class="group-title">VIP Online Earning & Friendship 🚀</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
 
-    <!-- Categories -->
-    <div class="section-header">
-        <span class="section-title">Popular Categories</span>
-        <a href="#" class="view-all">View all →</a>
+        <div class="group-item">
+            <div class="group-title">Daily Crypto & Forex Trading Signals 📈</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
+
+        <div class="group-item">
+            <div class="group-title">Pakistani & Indian Active Chat Club 🤝</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
+
+        <div class="group-item">
+            <div class="group-title">YouTube Sub4Sub Permanent Members ▶</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
+
+        <div class="group-item">
+            <div class="group-title">Pakistani Overseas Job Alerts 💼</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
+
+        <div class="group-item">
+            <div class="group-title">Pubg Mobile & FreeFire Tournament 🎮</div>
+            <div class="group-sub">👥 Verified Active Members</div>
+            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+        </div>
+
     </div>
-
-    <div class="categories-grid">
-        <div class="cat-card" onclick="filterCategory('Cricket')">
-            <div class="cat-icon" style="background: #fef9c3;">🏏</div>
-            <div class="cat-name">Cricket</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Jobs')">
-            <div class="cat-icon" style="background: #ccfbf1;">💼</div>
-            <div class="cat-name">Jobs</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Education')">
-            <div class="cat-icon" style="background: #e0f2fe;">📘</div>
-            <div class="cat-name">Education</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Crypto')">
-            <div class="cat-icon" style="background: #fef3c7;">₿</div>
-            <div class="cat-name">Crypto</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Movies')">
-            <div class="cat-icon" style="background: #fce7f3;">🎬</div>
-            <div class="cat-name">Movies</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Gaming')">
-            <div class="cat-icon" style="background: #f3e8ff;">🎮</div>
-            <div class="cat-name">Gaming</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Trading')">
-            <div class="cat-icon" style="background: #fee2e2;">📈</div>
-            <div class="cat-name">Trading</div>
-        </div>
-        <div class="cat-card" onclick="filterCategory('Sports')">
-            <div class="cat-icon" style="background: #e0e7ff;">🏅</div>
-            <div class="cat-name">Sports</div>
-        </div>
-    </div>
-
-    <!-- Horizontal Filter Tabs -->
-    <div class="tabs-container">
-        <button class="tab-btn active" onclick="filterTab('all', this)">All</button>
-        <button class="tab-btn" onclick="filterTab('Friendship', this)">🤝 Friendship</button>
-        <button class="tab-btn" onclick="filterTab('Earning', this)">💰 Earning</button>
-        <button class="tab-btn" onclick="filterTab('Sub4Sub', this)">▶ Sub4Sub</button>
-        <button class="tab-btn" onclick="filterTab('Crypto', this)">₿ Crypto</button>
-    </div>
-
-    <!-- Active Groups Listing -->
-    <div class="section-header">
-        <span class="section-title" id="listHeading">Active Invite Links</span>
-    </div>
-
-    <div class="groups-list" id="groupsList"></div>
 </div>
 
-<!-- Loading Popup -->
 <div class="popup-overlay" id="popup">
     <div class="popup-card">
         <div class="loader"></div>
-        <h3 style="font-size: 16px; color: #0f172a; margin-bottom: 6px;">Connecting to Server...</h3>
-        <p style="font-size: 13px; color: #64748b;">Redirecting to WhatsApp Group in 5 seconds</p>
+        <h3 style="font-size: 15px; color: #0f172a; margin-bottom: 4px;">Connecting to WhatsApp...</h3>
+        <p style="font-size: 12px; color: #64748b;">Opening group link in 5 seconds</p>
     </div>
 </div>
 
 <script>
-    const adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
-    const realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
+    var adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
+    var realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
-    // Dynamic Groups Database
-    const groupsData = [
-        { name: "VIP Online Earning & Friendship 🚀", category: "Earning" },
-        { name: "RUSSIAN-ENGLISH CHAT GPT FREE MOSCOW 💬", category: "Friendship" },
-        { name: "One house 🏠", category: "Friendship" },
-        { name: "True Friends Forever 🌍 ✨ T F F ✨", category: "Friendship" },
-        { name: "Daily Crypto & Forex Trading Signals 📈", category: "Crypto" },
-        { name: "Pakistani & Indian Active Chat Club 🤝", category: "Friendship" },
-        { name: "YouTube Sub4Sub Permanent Members ▶", category: "Sub4Sub" },
-        { name: "Pakistani Overseas Job Alerts 💼", category: "Jobs" },
-        { name: "Live Cricket Match & HD Streaming 🏏", category: "Cricket" },
-        { name: "Pubg Mobile & FreeFire Tournament 🎮", category: "Gaming" }
-    ];
-
-    const listContainer = document.getElementById('groupsList');
-
-    // Generate 100+ Realistic Group Items
-    function renderGroups(filter = 'all') {
-        let html = '';
-        let count = 0;
-
-        for (let i = 0; i < 50; i++) {
-            let item = groupsData[i % groupsData.length];
-            if (filter === 'all' || item.category.toLowerCase().includes(filter.toLowerCase()) || item.name.toLowerCase().includes(filter.toLowerCase())) {
-                count++;
-                html += `
-                    <div class="group-item">
-                        <div class="group-item-title">${item.name}</div>
-                        <div class="group-item-sub">👥 User submitted members • Verified Link</div>
-                        <button class="btn-join-now" onclick="handleJoin()">Join Now ↗</button>
-                    </div>
-                `;
-            }
-        }
-        listContainer.innerHTML = html || '<p style="text-align:center; color:#64748b; padding:20px;">No groups found.</p>';
-    }
-
-    // Initial Render
-    renderGroups();
-
-    // Join Button Click Handler
     function handleJoin() {
-        // 1. Open Adsterra in New Tab
         window.open(adsterraLink, '_blank');
-
-        // 2. Show Processing Popup
         document.getElementById('popup').style.display = 'flex';
-
-        // 3. Redirect to WhatsApp after 5 seconds
         setTimeout(function() {
             window.location.href = realWhatsappLink;
         }, 5000);
     }
 
-    // Search Filter
-    document.getElementById('searchInput').addEventListener('keyup', function(e) {
-        renderGroups(e.target.value);
-    });
-
-    // Category Click Filter
-    function filterCategory(catName) {
-        renderGroups(catName);
-        document.getElementById('listHeading').innerText = catName + " Groups";
-    }
-
-    // Tab Filter
-    function filterTab(tabName, elem) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        elem.classList.add('active');
-        renderGroups(tabName);
+    function filterGroups() {
+        var input = document.getElementById('searchInput').value.toLowerCase();
+        var cards = document.getElementsByClassName('group-item');
+        for (var i = 0; i < cards.length; i++) {
+            var title = cards[i].getElementsByClassName('group-title')[0].innerText.toLowerCase();
+            if (title.indexOf(input) > -1) {
+                cards[i].style.display = "block";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
     }
 </script>
 
