@@ -117,53 +117,17 @@
             document.getElementById('addGroupModal').style.display = 'none';
         }
 
-        // High quality category-matched curated photo collections
-        const categoryImages = {
-            GIRLS: [
-                "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&auto=format&fit=crop&q=80"
-            ],
-            GAMING: [
-                "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&auto=format&fit=crop&q=80"
-            ],
-            EARNING: [
-                "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=300&auto=format&fit=crop&q=80"
-            ],
-            FRIENDSHIP: [
-                "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=80"
-            ],
-            CHAT: [
-                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80"
-            ],
-            PROMOTION: [
-                "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=300&auto=format&fit=crop&q=80",
-                "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=300&auto=format&fit=crop&q=80"
-            ]
-        };
-
         const baseCategories = [
-            { name: "Real Girls Chat & Fun", tag: "GIRLS" },
-            { name: "Cute Girls Friendship", tag: "GIRLS" },
-            { name: "Desi Girls Chat Lounge", tag: "GIRLS" },
-            { name: "PUBG Mobile Custom Rooms", tag: "GAMING" },
-            { name: "Free Fire Diamonds Hub", tag: "GAMING" },
-            { name: "Online Earning Daily $50", tag: "EARNING" },
-            { name: "USDT & Crypto Signals", tag: "EARNING" },
-            { name: "Global Friends Community", tag: "FRIENDSHIP" },
-            { name: "Pakistan & India Chat Hub", tag: "CHAT" },
-            { name: "Sub4Sub YouTube Booster", tag: "PROMOTION" }
+            { name: "Real Girls Chat & Fun", tag: "GIRLS", keyword: "girl" },
+            { name: "Cute Girls Friendship", tag: "GIRLS", keyword: "woman" },
+            { name: "Desi Girls Chat Lounge", tag: "GIRLS", keyword: "female" },
+            { name: "PUBG Mobile Custom Rooms", tag: "GAMING", keyword: "gaming" },
+            { name: "Free Fire Diamonds Hub", tag: "GAMING", keyword: "esports" },
+            { name: "Online Earning Daily $50", tag: "EARNING", keyword: "money" },
+            { name: "USDT & Crypto Signals", tag: "EARNING", keyword: "crypto" },
+            { name: "Global Friends Community", tag: "FRIENDSHIP", keyword: "friends" },
+            { name: "Pakistan & India Chat Hub", tag: "CHAT", keyword: "people" },
+            { name: "Sub4Sub YouTube Booster", tag: "PROMOTION", keyword: "social" }
         ];
 
         const container = document.getElementById('cardsContainer');
@@ -173,9 +137,8 @@
             for (let i = 1; i <= 1000; i++) {
                 let item = baseCategories[(i - 1) % baseCategories.length];
                 
-                // Get image strictly related to category
-                let imgList = categoryImages[item.tag] || categoryImages.CHAT;
-                let selectedDp = imgList[(i - 1) % imgList.length];
+                // Guaranteed Unique Image DP per card using Picsum Unique Seed Mapping
+                let selectedDp = `https://picsum.photos/seed/${item.keyword}_card_${i}/200/200`;
 
                 cardsHTML += `
                     <div class="card">
@@ -198,8 +161,7 @@
             let dp = document.getElementById('userGroupDp').value;
 
             if (!dp) {
-                let imgList = categoryImages[category] || categoryImages.CHAT;
-                dp = imgList[Math.floor(Math.random() * imgList.length)];
+                dp = `https://picsum.photos/seed/user_added_${Date.now()}/200/200`;
             }
 
             // Create new card for user's group
@@ -226,5 +188,4 @@
     </script>
 
 </body>
-                        </html>
-    
+</html>
