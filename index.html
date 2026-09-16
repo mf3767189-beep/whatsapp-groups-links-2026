@@ -1,103 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Group Link 2026</title>
+    <title>1000+ WhatsApp Group Links 2026</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #0b141a; color: #e9edef; margin: 0; padding: 15px; }
+        .header { text-align: center; padding: 10px 0 20px; }
+        .header h1 { color: #00a884; font-size: 22px; margin-bottom: 5px; }
+        .header p { color: #8696a0; font-size: 13px; margin: 0; }
+        
+        .search-box {
+            width: 100%; max-width: 500px; margin: 0 auto 15px; display: block;
+            padding: 12px 15px; border-radius: 20px; border: 1px solid #2a3942;
+            background-color: #111b21; color: #fff; font-size: 14px; outline: none;
         }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 350px;
-            width: 100%;
+
+        .container { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+        
+        .group-card {
+            background-color: #111b21; border-radius: 12px; padding: 12px 15px;
+            display: flex; align-items: center; justify-content: space-between;
+            border: 1px solid #202c33;
         }
-        h2 { color: #075e54; margin-bottom: 10px; }
-        p { color: #555; font-size: 14px; }
-        .timer-box {
-            font-size: 28px;
-            font-weight: bold;
-            color: #d9534f;
-            margin: 15px 0;
+        .left-sec { display: flex; align-items: center; gap: 12px; }
+        .group-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .group-info h4 { margin: 0; font-size: 15px; color: #e9edef; }
+        .group-info p { margin: 3px 0 0; font-size: 12px; color: #8696a0; }
+        
+        .btn-join {
+            background-color: #00a884; color: #111b21; border: none;
+            padding: 8px 16px; border-radius: 18px; font-weight: bold;
+            font-size: 13px; cursor: pointer; transition: 0.2s; white-space: nowrap;
         }
-        .btn {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            width: 80%;
+        .btn-join:disabled { background-color: #2a3942; color: #8696a0; cursor: wait; }
+
+        /* Popup Notification */
+        .popup {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: #111b21; border: 1px solid #00a884; padding: 20px;
+            border-radius: 12px; text-align: center; display: none; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 85%; max-width: 320px;
         }
-        .btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
+        .popup p { font-size: 14px; margin-bottom: 10px; }
+        .loader {
+            border: 3px solid #2a3942; border-top: 3px solid #00a884;
+            border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>WhatsApp Group Link</h2>
-    <p>Please wait... Your group link is generating.</p>
-    
-    <!-- ٹائمر کاؤنٹر -->
-    <div class="timer-box" id="timer">15</div>
+<div class="header">
+    <h1>WhatsApp Groups Hub 2026</h1>
+    <p>1,000+ Active Online Earning & Friendship Groups</p>
+</div>
 
-    <!-- جوائن بٹن -->
-    <button id="joinBtn" class="btn" disabled>Wait for Timer...</button>
+<!-- سرچ بار -->
+<input type="text" class="search-box" placeholder="Search group name..." id="searchBar">
+
+<!-- گروپس لسٹ -->
+<div class="container" id="groupContainer"></div>
+
+<!-- بیک گراؤنڈ لک کا پاپ اپ -->
+<div class="popup" id="popupBox">
+    <div class="loader"></div>
+    <p style="margin-top: 12px; color: #e9edef;">Connecting to WhatsApp Server...</p>
+    <span style="font-size: 11px; color: #8696a0;">Opening group link in 6 seconds</span>
 </div>
 
 <script>
-    let timeLeft = 15;
-    const timerElem = document.getElementById('timer');
-    const joinBtn = document.getElementById('joinBtn');
-
-    // آپ کا ایڈسٹیرا سمارٹ لنک
     const adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
-    
-    // آپ کا واٹس ایپ گروپ لنک
-    const whatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
+    const realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
-    // 15 سیکنڈ کا کاؤنٹ ڈاؤن ٹائمر
-    const countdown = setInterval(() => {
-        timeLeft--;
-        timerElem.innerText = timeLeft;
+    // 1000+ گروپس کا آٹو جنریٹر ڈیٹا
+    const groupCategories = [
+        "VIP Online Earning", "Pakistani Girls Friendship", "Sub4Sub YouTube", 
+        "Crypto & Forex Signals", "Ludo King Tournament", "Pubg & FreeFire Lovers",
+        "Online Shopping Deals", "Jobs & Career Alert", "TikTok Viral Videos"
+    ];
 
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            timerElem.innerText = "Ready!";
-            timerElem.style.color = "#25d366";
-            
-            // بٹن فعال کرنا
-            joinBtn.removeAttribute('disabled');
-            joinBtn.innerText = "Join WhatsApp Group Now";
-        }
-    }, 1000);
+    const container = document.getElementById('groupContainer');
 
-    // بٹن پر کلک کا عمل
-    joinBtn.addEventListener('click', function() {
-        // 1. Adsterra کا ایڈ نئے ٹیب میں کھلے گا
-        window.open(adsterraLink, '_blank');
+    // 1000 گروپس تیار کرنے کا لوپ
+    for (let i = 1; i <= 1000; i++) {
+        let category = groupCategories[i % groupCategories.length];
+        let members = Math.floor(Math.between ? Math.between(180, 256) : (180 + (i % 75)));
         
-        // 2. اصل واٹس ایپ کا لنک اسی پیج پر کھل جائے گا
-        window.location.href = whatsappLink;
+        let cardHTML = `
+            <div class="group-card">
+                <div class="left-sec">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" class="group-img" alt="group">
+                    <div class="group-info">
+                        <h4>${category} #${i}</h4>
+                        <p>Active • ${members}/257 Members</p>
+                    </div>
+                </div>
+                <button class="btn-join" onclick="handleJoin(this)">Join</button>
+            </div>
+        `;
+        container.innerHTML += cardHTML;
+    }
+
+    // جوائن بٹن کا فنکشن
+    function handleJoin(button) {
+        // 1. Adsterra ایڈ نئے ٹیب میں کھولیں
+        window.open(adsterraLink, '_blank');
+
+        // 2. پاپ اپ شو کریں
+        document.getElementById('popupBox').style.display = 'block';
+
+        // 3. 6 سیکنڈ بعد اصلی واٹس ایپ پر ری ڈائریکٹ کریں
+        setTimeout(function() {
+            window.location.href = realWhatsappLink;
+        }, 6000);
+    }
+
+    // سرچ بار کا فنکشن
+    document.getElementById('searchBar').addEventListener('keyup', function(e) {
+        let term = e.target.value.toLowerCase();
+        let cards = document.querySelectorAll('.group-card');
+        cards.forEach(card => {
+            let title = card.querySelector('h4').innerText.toLowerCase();
+            if(title.includes(term)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
     });
 </script>
 
