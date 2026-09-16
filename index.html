@@ -8,14 +8,21 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #f7f9fa; color: #1c1e21; }
 
-        .navbar { background-color: #15803d; color: white; padding: 14px 20px; font-size: 18px; font-weight: bold; }
+        .navbar { 
+            background-color: #15803d; color: white; padding: 14px 20px; 
+            font-size: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;
+        }
+        .btn-add-submit {
+            background: #bbf7d0; color: #15803d; padding: 6px 12px; border-radius: 20px;
+            font-size: 12px; font-weight: bold; text-decoration: none; cursor: pointer;
+        }
         
         .hero {
             background-color: #15803d; color: white; padding: 25px 16px 30px;
             text-align: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
         }
         .hero h1 { font-size: 22px; margin-bottom: 6px; }
-        .hero h2 { font-size: 16px; color: #bbf7d0; margin-bottom: 12px; }
+        .hero h2 { font-size: 15px; color: #bbf7d0; margin-bottom: 12px; }
         .hero p { font-size: 13px; opacity: 0.9; max-width: 400px; margin: 0 auto 15px; }
 
         .search-input {
@@ -38,6 +45,17 @@
             border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; text-align: center;
         }
 
+        /* Submit Group Modal Form */
+        .submit-card {
+            background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px;
+            border: 2px dashed #15803d; display: none;
+        }
+        .submit-card h3 { font-size: 15px; color: #15803d; margin-bottom: 10px; }
+        .submit-card input {
+            width: 100%; padding: 10px; margin-bottom: 8px; border: 1px solid #cbd5e1;
+            border-radius: 8px; font-size: 13px; outline: none;
+        }
+
         /* Popup */
         .popup-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6);
@@ -53,56 +71,30 @@
 </head>
 <body>
 
-<div class="navbar">💬 JoinChatGroups</div>
+<div class="navbar">
+    <span>💬 JoinChatGroups</span>
+    <span class="btn-add-submit" onclick="toggleSubmitForm()">+ Submit Group</span>
+</div>
 
 <div class="hero">
     <h1>WhatsApp Group Links 2026</h1>
-    <h2>6,799+ Active Invite Links</h2>
+    <h2>1,000+ Active Invite Links</h2>
     <p>Find & join verified WhatsApp groups for online earning, crypto, gaming, and friendship.</p>
     <input type="text" class="search-input" placeholder="Search group by name..." id="searchInput" onkeyup="filterGroups()">
 </div>
 
 <div class="main-body">
-    <div class="section-title">Active Invite Links</div>
-    <div class="groups-list" id="groupsList">
-        
-        <div class="group-item">
-            <div class="group-title">VIP Online Earning & Friendship 🚀</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
 
-        <div class="group-item">
-            <div class="group-title">Daily Crypto & Forex Trading Signals 📈</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
-
-        <div class="group-item">
-            <div class="group-title">Pakistani & Indian Active Chat Club 🤝</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
-
-        <div class="group-item">
-            <div class="group-title">YouTube Sub4Sub Permanent Members ▶</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
-
-        <div class="group-item">
-            <div class="group-title">Pakistani Overseas Job Alerts 💼</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
-
-        <div class="group-item">
-            <div class="group-title">Pubg Mobile & FreeFire Tournament 🎮</div>
-            <div class="group-sub">👥 Verified Active Members</div>
-            <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-        </div>
-
+    <!-- Group Submit Form -->
+    <div class="submit-card" id="submitForm">
+        <h3>Add Your WhatsApp Group</h3>
+        <input type="text" id="newGroupName" placeholder="Group Name">
+        <input type="text" id="newGroupLink" placeholder="WhatsApp Group Link (https://chat...)">
+        <button class="btn-join" onclick="addNewGroup()">Add Group Now</button>
     </div>
+
+    <div class="section-title">Active Invite Links</div>
+    <div class="groups-list" id="groupsList"></div>
 </div>
 
 <div class="popup-overlay" id="popup">
@@ -117,12 +109,67 @@
     var adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
     var realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
+    var categories = [
+        "VIP Online Earning & Friendship 🚀",
+        "Daily Crypto & Forex Trading Signals 📈",
+        "Pakistani & Indian Active Chat Club 🤝",
+        "YouTube Sub4Sub Permanent Members ▶",
+        "Pakistani Overseas Job Alerts 💼",
+        "Pubg Mobile & FreeFire Tournament 🎮",
+        "Ludo King Official Gaming Group 🎲",
+        "TikTok Viral Tricks & Videos 🎬"
+    ];
+
+    var container = document.getElementById('groupsList');
+    var htmlContent = '';
+
+    // 1000 Groups Auto Generator (Fast Load)
+    for (var i = 1; i <= 1000; i++) {
+        var groupName = categories[i % categories.length] + " #" + i;
+        htmlContent += `
+            <div class="group-item">
+                <div class="group-title">${groupName}</div>
+                <div class="group-sub">👥 User Submitted • Active Members</div>
+                <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+            </div>
+        `;
+    }
+    container.innerHTML = htmlContent;
+
     function handleJoin() {
         window.open(adsterraLink, '_blank');
         document.getElementById('popup').style.display = 'flex';
         setTimeout(function() {
             window.location.href = realWhatsappLink;
         }, 5000);
+    }
+
+    function toggleSubmitForm() {
+        var form = document.getElementById('submitForm');
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function addNewGroup() {
+        var name = document.getElementById('newGroupName').value;
+        var link = document.getElementById('newGroupLink').value;
+
+        if (name && link) {
+            var newCard = document.createElement('div');
+            newCard.className = 'group-item';
+            newCard.innerHTML = `
+                <div class="group-title">${name} 🆕</div>
+                <div class="group-sub">👥 User Submitted Just Now</div>
+                <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
+            `;
+            container.insertBefore(newCard, container.firstChild);
+            
+            document.getElementById('newGroupName').value = '';
+            document.getElementById('newGroupLink').value = '';
+            toggleSubmitForm();
+            alert("Group added successfully to the top!");
+        } else {
+            alert("Please enter both group name and link.");
+        }
     }
 
     function filterGroups() {
@@ -140,5 +187,4 @@
 </script>
 
 </body>
-    </html>
-    
+</html>
