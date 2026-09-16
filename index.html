@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Groups Hub 2026</title>
+    <title>WhatsApp Groups</title>
     <style>
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #0b141a; color: #e9edef; margin: 0; padding: 15px; }
-        .header { text-align: center; padding: 10px 0 20px; }
-        .header h1 { color: #00a884; font-size: 22px; margin-bottom: 5px; }
-        .header p { color: #8696a0; font-size: 13px; margin: 0; }
+        body { background-color: #0b141a; color: #e9edef; margin: 0; padding: 0; }
         
-        .search-box {
-            width: 100%; max-width: 500px; margin: 0 auto 15px; display: block;
-            padding: 12px 15px; border-radius: 20px; border: 1px solid #2a3942;
-            background-color: #111b21; color: #fff; font-size: 14px; outline: none;
+        /* واٹس ایپ لُک ہیڈر */
+        .header {
+            background-color: #008069; color: white; padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 100;
         }
+        .header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+        .header p { font-size: 12px; margin: 3px 0 0; opacity: 0.9; }
 
-        .container { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+        .container { padding: 12px; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
         
         .group-card {
-            background-color: #111b21; border-radius: 12px; padding: 12px 15px;
+            background-color: #111b21; border-radius: 10px; padding: 12px;
             display: flex; align-items: center; justify-content: space-between;
             border: 1px solid #202c33;
         }
         .left-sec { display: flex; align-items: center; gap: 12px; }
-        .group-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
-        .group-info h4 { margin: 0; font-size: 15px; color: #e9edef; }
-        .group-info p { margin: 3px 0 0; font-size: 12px; color: #8696a0; }
+        .group-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+        .group-info h4 { margin: 0; font-size: 15px; color: #e9edef; font-weight: 500; }
+        .group-info p { margin: 4px 0 0; font-size: 12px; color: #8696a0; }
         
         .btn-join {
             background-color: #00a884; color: #111b21; border: none;
-            padding: 8px 16px; border-radius: 18px; font-weight: bold;
-            font-size: 13px; cursor: pointer; transition: 0.2s; white-space: nowrap;
+            padding: 8px 18px; border-radius: 20px; font-weight: bold;
+            font-size: 13px; cursor: pointer; white-space: nowrap;
         }
 
+        /* پروسیسنگ پاپ اپ */
         .popup {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: #111b21; border: 1px solid #00a884; padding: 20px;
-            border-radius: 12px; text-align: center; display: none; z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 85%; max-width: 320px;
+            background: #111b21; border: 1px solid #00a884; padding: 22px;
+            border-radius: 14px; text-align: center; display: none; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 85%; max-width: 300px;
         }
         .loader {
             border: 3px solid #2a3942; border-top: 3px solid #00a884;
-            border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto;
+            border-radius: 50%; width: 26px; height: 26px; animation: spin 0.8s linear infinite; margin: 0 auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -51,43 +51,48 @@
 <body>
 
 <div class="header">
-    <h1>WhatsApp Groups Hub 2026</h1>
-    <p>1,000+ Active Online Earning & Friendship Groups</p>
+    <h1>WhatsApp Group Links</h1>
+    <p>Active Earning & Friendship Groups 2026</p>
 </div>
 
-<input type="text" class="search-box" placeholder="Search group name..." id="searchBar">
 <div class="container" id="groupContainer"></div>
 
 <div class="popup" id="popupBox">
     <div class="loader"></div>
-    <p style="margin-top: 12px; color: #e9edef;">Connecting to WhatsApp Server...</p>
-    <span style="font-size: 11px; color: #8696a0;">Opening group link in 6 seconds</span>
+    <p style="margin-top: 15px; color: #e9edef; font-size: 14px;">Connecting to Group...</p>
+    <span style="font-size: 11px; color: #8696a0;">Redirecting in 5 seconds</span>
 </div>
 
 <script>
     const adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
     const realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
-    const groupCategories = [
-        "VIP Online Earning", "Pakistani Girls Friendship", "Sub4Sub YouTube", 
-        "Crypto & Forex Signals", "Ludo King Tournament", "Pubg & FreeFire Lovers",
-        "Online Shopping Deals", "Jobs & Career Alert", "TikTok Viral Videos"
+    // رئیل گروپس کا ڈیٹا بغیر کسی نمبرنگ کے
+    const groupsData = [
+        { name: "VIP Online Earning Hub", members: "248", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=100&h=100&fit=crop" },
+        { name: "Pakistani Friendship Club", members: "251", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=100&h=100&fit=crop" },
+        { name: "Daily Crypto Signals", members: "230", img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=100&h=100&fit=crop" },
+        { name: "YouTube Sub4Sub Official", members: "254", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=100&h=100&fit=crop" },
+        { name: "Pubg & FreeFire Lovers", members: "240", img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=100&h=100&fit=crop" },
+        { name: "Real Dollar Earning Method", members: "256", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=100&h=100&fit=crop" },
+        { name: "Ludo King Champion Group", members: "215", img: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=100&h=100&fit=crop" },
+        { name: "TikTok Viral Tricks 2026", members: "249", img: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=100&h=100&fit=crop" }
     ];
 
     const container = document.getElementById('groupContainer');
     let htmlContent = '';
 
-    for (let i = 1; i <= 500; i++) {
-        let category = groupCategories[i % groupCategories.length];
-        let members = 180 + (i % 75);
+    // 50 رئیل لکنگ گروپس تیار کرنے کا لوپ
+    for (let i = 0; i < 50; i++) {
+        let group = groupsData[i % groupsData.length];
         
         htmlContent += `
             <div class="group-card">
                 <div class="left-sec">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" class="group-img" alt="group">
+                    <img src="${group.img}" class="group-img" alt="group">
                     <div class="group-info">
-                        <h4>${category} #${i}</h4>
-                        <p>Active • ${members}/257 Members</p>
+                        <h4>${group.name}</h4>
+                        <p>Active • ${group.members}/257 Members</p>
                     </div>
                 </div>
                 <button class="btn-join" onclick="handleJoin()">Join</button>
@@ -97,26 +102,17 @@
     container.innerHTML = htmlContent;
 
     function handleJoin() {
+        // 1. ایڈسٹیرا ایڈ الگ ٹیب میں کھلے گا
         window.open(adsterraLink, '_blank');
+        
+        // 2. واٹس ایپ پروسیسنگ پاپ اپ
         document.getElementById('popupBox').style.display = 'block';
 
+        // 3. 5 سیکنڈ بعد اصلی واٹس ایپ کا لنک اوپن
         setTimeout(function() {
             window.location.href = realWhatsappLink;
-        }, 6000);
+        }, 5000);
     }
-
-    document.getElementById('searchBar').addEventListener('keyup', function(e) {
-        let term = e.target.value.toLowerCase();
-        let cards = document.querySelectorAll('.group-card');
-        cards.forEach(card => {
-            let title = card.querySelector('h4').innerText.toLowerCase();
-            if(title.includes(term)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
 </script>
 
 </body>
