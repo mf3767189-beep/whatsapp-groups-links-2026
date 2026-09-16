@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1000+ WhatsApp Group Links 2026</title>
+    <title>WhatsApp Groups Hub 2026</title>
     <style>
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #0b141a; color: #e9edef; margin: 0; padding: 15px; }
@@ -34,16 +34,13 @@
             padding: 8px 16px; border-radius: 18px; font-weight: bold;
             font-size: 13px; cursor: pointer; transition: 0.2s; white-space: nowrap;
         }
-        .btn-join:disabled { background-color: #2a3942; color: #8696a0; cursor: wait; }
 
-        /* Popup Notification */
         .popup {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #111b21; border: 1px solid #00a884; padding: 20px;
             border-radius: 12px; text-align: center; display: none; z-index: 1000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 85%; max-width: 320px;
         }
-        .popup p { font-size: 14px; margin-bottom: 10px; }
         .loader {
             border: 3px solid #2a3942; border-top: 3px solid #00a884;
             border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto;
@@ -58,13 +55,9 @@
     <p>1,000+ Active Online Earning & Friendship Groups</p>
 </div>
 
-<!-- سرچ بار -->
 <input type="text" class="search-box" placeholder="Search group name..." id="searchBar">
-
-<!-- گروپس لسٹ -->
 <div class="container" id="groupContainer"></div>
 
-<!-- بیک گراؤنڈ لک کا پاپ اپ -->
 <div class="popup" id="popupBox">
     <div class="loader"></div>
     <p style="margin-top: 12px; color: #e9edef;">Connecting to WhatsApp Server...</p>
@@ -75,7 +68,6 @@
     const adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
     const realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
 
-    // 1000+ گروپس کا آٹو جنریٹر ڈیٹا
     const groupCategories = [
         "VIP Online Earning", "Pakistani Girls Friendship", "Sub4Sub YouTube", 
         "Crypto & Forex Signals", "Ludo King Tournament", "Pubg & FreeFire Lovers",
@@ -83,13 +75,13 @@
     ];
 
     const container = document.getElementById('groupContainer');
+    let htmlContent = '';
 
-    // 1000 گروپس تیار کرنے کا لوپ
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 500; i++) {
         let category = groupCategories[i % groupCategories.length];
-        let members = Math.floor(Math.between ? Math.between(180, 256) : (180 + (i % 75)));
+        let members = 180 + (i % 75);
         
-        let cardHTML = `
+        htmlContent += `
             <div class="group-card">
                 <div class="left-sec">
                     <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" class="group-img" alt="group">
@@ -98,27 +90,21 @@
                         <p>Active • ${members}/257 Members</p>
                     </div>
                 </div>
-                <button class="btn-join" onclick="handleJoin(this)">Join</button>
+                <button class="btn-join" onclick="handleJoin()">Join</button>
             </div>
         `;
-        container.innerHTML += cardHTML;
     }
+    container.innerHTML = htmlContent;
 
-    // جوائن بٹن کا فنکشن
-    function handleJoin(button) {
-        // 1. Adsterra ایڈ نئے ٹیب میں کھولیں
+    function handleJoin() {
         window.open(adsterraLink, '_blank');
-
-        // 2. پاپ اپ شو کریں
         document.getElementById('popupBox').style.display = 'block';
 
-        // 3. 6 سیکنڈ بعد اصلی واٹس ایپ پر ری ڈائریکٹ کریں
         setTimeout(function() {
             window.location.href = realWhatsappLink;
         }, 6000);
     }
 
-    // سرچ بار کا فنکشن
     document.getElementById('searchBar').addEventListener('keyup', function(e) {
         let term = e.target.value.toLowerCase();
         let cards = document.querySelectorAll('.group-card');
