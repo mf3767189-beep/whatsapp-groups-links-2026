@@ -19,29 +19,23 @@
         body { background-color: var(--bg-main); color: var(--text-main); padding: 15px; display: flex; justify-content: center; min-height: 100vh; }
         .wrapper { width: 100%; max-width: 480px; }
         
-        /* Header Section */
         .header { text-align: center; padding: 25px 15px; background: linear-gradient(135deg, #005c4b, var(--primary-dark)); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px; }
         .header h1 { font-size: 22px; color: #fff; margin-bottom: 6px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .header p { font-size: 13px; color: #d1d7db; margin-bottom: 15px; }
         
-        /* Prominent Add Group Button */
         .btn-add-glow { background: #ffbc00; color: #111; font-weight: bold; border: none; padding: 12px 22px; border-radius: 30px; font-size: 14px; cursor: pointer; box-shadow: 0 0 15px rgba(255, 188, 0, 0.6); transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .btn-add-glow:hover { transform: scale(1.05); background: #ffd000; }
 
-        /* Search Bar */
         .search-box { margin-bottom: 20px; }
         .search-box input { width: 100%; padding: 14px 18px; background: var(--bg-input); border: 1px solid #2a3942; border-radius: 12px; color: #fff; font-size: 14px; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .search-box input:focus { border-color: var(--primary); }
 
-        /* Stats Bar */
         .stats-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 13px; color: var(--text-muted); padding: 0 5px; }
         .stats-bar b { color: var(--primary); }
 
-        /* Group Cards */
         .group-card { background: var(--bg-card); border: 1px solid #2a3942; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; display: flex; gap: 12px; align-items: center; }
         .group-card:hover { transform: translateY(-2px); border-color: var(--primary); }
         
-        /* Group DP Styles */
         .group-dp-container { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); flex-shrink: 0; background: #202c33; display: flex; align-items: center; justify-content: center; }
         .group-dp-img { width: 100%; height: 100%; object-fit: cover; }
         .whatsapp-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: #1f2c34; }
@@ -52,7 +46,6 @@
         .btn-join { display: block; width: 100%; background: var(--primary); color: #111b21; text-align: center; padding: 8px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 12px; transition: 0.2s; border: none; cursor: pointer; }
         .btn-join:hover { background: #008f72; color: #fff; }
 
-        /* Modal Styles */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; }
         .modal.hidden { display: none; }
         .modal-content { background: var(--bg-card); width: 100%; max-width: 420px; padding: 22px; border-radius: 16px; border: 1px solid #2a3942; box-shadow: 0 10px 30px rgba(0,0,0,0.6); max-height: 90vh; overflow-y: auto; text-align: center; }
@@ -66,14 +59,12 @@
 <body>
 
 <div class="wrapper">
-    <!-- VIP Header -->
     <div class="header">
         <h1>WhatsApp Group Links 2026</h1>
         <p>🔥 Active Verified Invite Links • Join & Grow</p>
         <button class="btn-add-glow" onclick="openModal()">➕ Add Group</button>
     </div>
 
-    <!-- Search Input -->
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="🔍 Search groups by name..." onkeyup="filterGroups()">
     </div>
@@ -83,15 +74,13 @@
         <span>⚡ Verified & Live</span>
     </div>
 
-    <!-- Group List Container -->
     <div id="groupContainer"></div>
 </div>
 
-<!-- Add Group Modal -->
 <div id="addGroupModal" class="modal hidden">
     <div class="modal-content" style="text-align: left;">
         <h3>🚀 Add Your WhatsApp Group</h3>
-        <input type="text" id="groupNameInput" placeholder="Group Name (e.g., My Crypto Club)">
+        <input type="text" id="groupNameInput" placeholder="Enter Your Custom Group Name...">
         <input type="url" id="groupLinkInput" placeholder="WhatsApp Invite Link (https://chat.whatsapp.com/...)">
         
         <div class="modal-btns">
@@ -101,7 +90,6 @@
     </div>
 </div>
 
-<!-- Firebase Realtime Database & Main App Logic -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
     import { getDatabase, ref, push, get, child } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
@@ -123,25 +111,45 @@
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
     let pendingGroupUrl = null;
 
-    // Default 12 Groups with proper clean titles (You can rename titles here as you want)
-    let defaultGroups = [
-        { title: "Crypto Trading Hub 🚀", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Online Earning Pakistan 💰", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Free Bitcoin & Signals 📈", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "YouTube Subscribers Club 🎬", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Student Study & Jobs Alert 📚", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Graphic Designing Course 🎨", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Programming & Web Dev 💻", link: "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Funny Videos & Memes 😂", link: "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "AI & ChatGPT Learners 🤖", link: "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Freelancing & Fiverr Tips 💼", link: "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Affiliate Marketing Pro 🌐", link: "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "VIP Networkers Club 🔥", link: "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4", dp: "" }
+    // Aapke 12 original links (API inke real names aur DPs khud fetch karega)
+    let defaultGroupLinks = [
+        "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
     ];
+
+    async function fetchMetadata(link, customTitle = "") {
+        let title = customTitle || "WhatsApp Group";
+        let dp = "";
+        try {
+            let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
+            let json = await res.json();
+            if (json.status === 'success') {
+                if (!customTitle && json.data.title) {
+                    title = json.data.title;
+                }
+                if (json.data.image && json.data.image.url) {
+                    dp = json.data.image.url;
+                }
+            }
+        } catch (e) {
+            console.log("Fetch error:", e);
+        }
+        return { title, link, dp };
+    }
 
     async function loadGroups() {
         let container = document.getElementById('groupContainer');
-        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading groups...</p>";
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Fetching real names & DPs...</p>";
 
         let firebaseGroups = [];
         try {
@@ -151,14 +159,17 @@
                 snapshot.forEach((childSnapshot) => {
                     firebaseGroups.push(childSnapshot.val());
                 });
-                firebaseGroups.reverse(); // New groups on top
+                firebaseGroups.reverse();
             }
         } catch(e) {
             console.log("Firebase fetch error: ", e);
         }
 
-        // Combine Firebase groups and Default groups together
-        let allGroups = [...firebaseGroups, ...defaultGroups];
+        // Fetch real names and DPs for default 12 groups via API
+        let defaultGroupsPromises = defaultGroupLinks.map(link => fetchMetadata(link));
+        let resolvedDefaultGroups = await Promise.all(defaultGroupsPromises);
+
+        let allGroups = [...firebaseGroups, ...resolvedDefaultGroups];
         renderGroups(allGroups);
     }
 
@@ -176,13 +187,12 @@
             let card = document.createElement('div');
             card.className = 'group-card';
             
-            let dpHtml = '';
+            let dpHtml = `<div class="whatsapp-fallback">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#00a884"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+            </div>`;
+
             if (g.dp && g.dp.startsWith('http')) {
-                dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'whatsapp-fallback\'><svg viewBox=\'0 0 24 24\' width=\'28\' height=\'28\' fill=\'#00a884\'><path d=\'M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z\'/></svg></div>';">`;
-            } else {
-                dpHtml = `<div class="whatsapp-fallback">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="#00a884"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
-                </div>`;
+                dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP">`;
             }
 
             card.innerHTML = `
@@ -198,7 +208,6 @@
         });
     }
 
-    // Perfect Adsterra + WhatsApp Redirect Mechanism
     window.startJoinProcess = function(groupUrl) {
         window.open(ADSTERRA_LINK, '_blank');
         pendingGroupUrl = groupUrl;
@@ -236,26 +245,14 @@
         if(!link) { alert("Please enter the WhatsApp group link!"); return; }
 
         let submitBtn = document.querySelector('.btn-submit');
-        submitBtn.innerText = "Saving to Cloud...";
+        submitBtn.innerText = "Fetching DP & Saving...";
 
-        let fetchedDp = "";
-        try {
-            let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
-            let json = await res.json();
-            if(json.status === 'success' && json.data.image) {
-                fetchedDp = json.data.image.url;
-            }
-        } catch(e) {}
-
-        let newGroup = {
-            title: groupName,
-            link: link,
-            dp: fetchedDp
-        };
+        // Naye group ke liye user ka diya hua custom title use hoga, aur DP API se fetch ho jayegi
+        let groupData = await fetchMetadata(link, groupName);
 
         try {
             const groupsRef = ref(db, 'whatsapp_groups');
-            await push(groupsRef, newGroup);
+            await push(groupsRef, groupData);
             
             document.getElementById('groupNameInput').value = '';
             document.getElementById('groupLinkInput').value = '';
@@ -263,7 +260,7 @@
             closeModal();
 
             window.open(ADSTERRA_LINK, '_blank');
-            alert("🎉 Your group has been successfully published live on Cloud for everyone!");
+            alert("🎉 Your group has been successfully published live with custom title & real DP!");
             loadGroups();
         } catch (e) {
             alert("Error saving group: " + e.message);
