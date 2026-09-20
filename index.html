@@ -123,20 +123,20 @@
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
     let pendingGroupUrl = null;
 
-    // Default 12 Groups
+    // Default 12 Groups with proper clean titles (You can rename titles here as you want)
     let defaultGroups = [
-        { title: "Active WhatsApp Group #1", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #2", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #3", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #4", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #5", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #6", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #7", link: "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #8", link: "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #9", link: "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #10", link: "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #11", link: "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4", dp: "" },
-        { title: "Active WhatsApp Group #12", link: "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4", dp: "" }
+        { title: "Crypto Trading Hub 🚀", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Online Earning Pakistan 💰", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Free Bitcoin & Signals 📈", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "YouTube Subscribers Club 🎬", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Student Study & Jobs Alert 📚", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Graphic Designing Course 🎨", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Programming & Web Dev 💻", link: "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Funny Videos & Memes 😂", link: "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "AI & ChatGPT Learners 🤖", link: "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Freelancing & Fiverr Tips 💼", link: "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Affiliate Marketing Pro 🌐", link: "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "VIP Networkers Club 🔥", link: "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4", dp: "" }
     ];
 
     async function loadGroups() {
@@ -157,7 +157,7 @@
             console.log("Firebase fetch error: ", e);
         }
 
-        // Combine Firebase groups and Default groups together (works for both equally)
+        // Combine Firebase groups and Default groups together
         let allGroups = [...firebaseGroups, ...defaultGroups];
         renderGroups(allGroups);
     }
@@ -198,7 +198,7 @@
         });
     }
 
-    // Robust Adsterra + Group link opener for both default and user-added groups
+    // Perfect Adsterra + WhatsApp Redirect Mechanism
     window.startJoinProcess = function(groupUrl) {
         window.open(ADSTERRA_LINK, '_blank');
         pendingGroupUrl = groupUrl;
