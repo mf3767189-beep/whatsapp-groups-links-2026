@@ -123,25 +123,25 @@
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
     let pendingGroupUrl = null;
 
-    // Default 12 Groups Links (Real names & DPs will be fetched automatically via API)
-    let defaultGroupLinks = [
-        "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
+    // Default 12 Groups
+    let defaultGroups = [
+        { title: "Active WhatsApp Group #1", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #2", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #3", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #4", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #5", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #6", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #7", link: "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #8", link: "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #9", link: "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #10", link: "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #11", link: "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #12", link: "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4", dp: "" }
     ];
 
     async function loadGroups() {
         let container = document.getElementById('groupContainer');
-        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Fetching real group names & DPs from cloud...</p>";
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading groups...</p>";
 
         let firebaseGroups = [];
         try {
@@ -157,24 +157,7 @@
             console.log("Firebase fetch error: ", e);
         }
 
-        // Fetch real title and DP for default 12 groups concurrently
-        let defaultGroupsPromises = defaultGroupLinks.map(async (link, index) => {
-            let title = `Active WhatsApp Group #${index + 1}`;
-            let dp = "";
-            try {
-                let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
-                let json = await res.json();
-                if (json.status === 'success') {
-                    if (json.data.title) title = json.data.title;
-                    if (json.data.image && json.data.image.url) dp = json.data.image.url;
-                }
-            } catch(e) {}
-            return { title: title, link: link, dp: dp };
-        });
-
-        let defaultGroups = await Promise.all(defaultGroupsPromises);
-
-        // Combine Firebase groups and Default groups together
+        // Combine Firebase groups and Default groups together (works for both equally)
         let allGroups = [...firebaseGroups, ...defaultGroups];
         renderGroups(allGroups);
     }
@@ -215,16 +198,10 @@
         });
     }
 
-    function startJoinProcess(groupUrl) {
-        let shownGroups = JSON.parse(localStorage.getItem('ad_shown_groups')) || [];
-        if (!shownGroups.includes(groupUrl)) {
-            window.open(ADSTERRA_LINK, '_blank');
-            shownGroups.push(groupUrl);
-            localStorage.setItem('ad_shown_groups', JSON.stringify(shownGroups));
-            pendingGroupUrl = groupUrl;
-        } else {
-            window.open(groupUrl, '_blank');
-        }
+    // Robust Adsterra + Group link opener for both default and user-added groups
+    window.startJoinProcess = function(groupUrl) {
+        window.open(ADSTERRA_LINK, '_blank');
+        pendingGroupUrl = groupUrl;
     }
 
     window.addEventListener('focus', function() {
