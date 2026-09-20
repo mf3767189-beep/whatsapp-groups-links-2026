@@ -1,190 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Group Links 2026</title>
+    <title>WhatsApp Group Links 2026 - Active Invite Links</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #f7f9fa; color: #1c1e21; }
-
-        .navbar { 
-            background-color: #15803d; color: white; padding: 14px 20px; 
-            font-size: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;
+        :root {
+            --primary: #00a884;
+            --primary-dark: #008069;
+            --bg-main: #0b141a;
+            --bg-card: #111b21;
+            --bg-input: #202c33;
+            --text-main: #e9edef;
+            --text-muted: #8696a0;
+            --accent: #f59e0b;
         }
-        .btn-add-submit {
-            background: #bbf7d0; color: #15803d; padding: 6px 12px; border-radius: 20px;
-            font-size: 12px; font-weight: bold; text-decoration: none; cursor: pointer;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); padding: 15px; display: flex; justify-content: center; min-height: 100vh; }
+        .wrapper { width: 100%; max-width: 480px; }
         
-        .hero {
-            background-color: #15803d; color: white; padding: 25px 16px 30px;
-            text-align: center; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
-        }
-        .hero h1 { font-size: 22px; margin-bottom: 6px; }
-        .hero h2 { font-size: 15px; color: #bbf7d0; margin-bottom: 12px; }
-        .hero p { font-size: 13px; opacity: 0.9; max-width: 400px; margin: 0 auto 15px; }
+        /* Header Section */
+        .header { text-align: center; padding: 25px 15px; background: linear-gradient(135deg, #005c4b, var(--primary-dark)); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); margin-bottom: 20px; }
+        .header h1 { font-size: 22px; color: #fff; margin-bottom: 6px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .header p { font-size: 13px; color: #d1d7db; margin-bottom: 15px; }
+        
+        /* Prominent Add Group Button */
+        .btn-add-glow { background: #ffbc00; color: #111; font-weight: bold; border: none; padding: 12px 22px; border-radius: 30px; font-size: 14px; cursor: pointer; box-shadow: 0 0 15px rgba(255, 188, 0, 0.6); transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-add-glow:hover { transform: scale(1.05); background: #ffd000; }
 
-        .search-input {
-            width: 100%; max-width: 400px; padding: 12px 18px; border-radius: 25px; border: none;
-            font-size: 14px; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        /* Search Bar */
+        .search-box { margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 14px 18px; background: var(--bg-input); border: 1px solid #2a3942; border-radius: 12px; color: #fff; font-size: 14px; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .search-box input:focus { border-color: var(--primary); }
 
-        .main-body { max-width: 480px; margin: 0 auto; padding: 20px 15px; }
-        .section-title { font-size: 14px; font-weight: 800; color: #15803d; margin-bottom: 12px; text-transform: uppercase; }
+        /* Stats Bar */
+        .stats-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 13px; color: var(--text-muted); padding: 0 5px; }
+        .stats-bar b { color: var(--primary); }
 
-        .groups-list { display: flex; flex-direction: column; gap: 12px; }
-        .group-item {
-            background: white; border-radius: 12px; padding: 15px; border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .group-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-        .group-sub { font-size: 12px; color: #64748b; margin-bottom: 12px; }
-        .btn-join {
-            background-color: #15803d; color: white; width: 100%; border: none; padding: 11px 0;
-            border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; text-align: center;
-        }
+        /* Group Cards */
+        .group-card { background: var(--bg-card); border: 1px solid #2a3942; border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s; display: flex; gap: 12px; align-items: center; }
+        .group-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+        
+        /* Group DP Styles */
+        .group-dp-container { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); flex-shrink: 0; background: #202c33; display: flex; align-items: center; justify-content: center; }
+        .group-dp-img { width: 100%; height: 100%; object-fit: cover; }
+        .whatsapp-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: #1f2c34; }
 
-        /* Submit Group Modal Form */
-        .submit-card {
-            background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px;
-            border: 2px dashed #15803d; display: none;
-        }
-        .submit-card h3 { font-size: 15px; color: #15803d; margin-bottom: 10px; }
-        .submit-card input {
-            width: 100%; padding: 10px; margin-bottom: 8px; border: 1px solid #cbd5e1;
-            border-radius: 8px; font-size: 13px; outline: none;
-        }
+        .group-info { flex: 1; min-width: 0; }
+        .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .badge { background: rgba(0, 168, 132, 0.15); color: var(--primary); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+        .members-count { font-size: 10px; color: var(--accent); }
+        .group-title { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .group-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+        .btn-join { display: block; width: 100%; background: var(--primary); color: #111b21; text-align: center; padding: 7px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 12px; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-join:hover { background: #008f72; color: #fff; }
 
-        /* Popup */
-        .popup-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6);
-            display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
-        }
-        .popup-card { background: white; border-radius: 16px; padding: 25px; text-align: center; width: 100%; max-width: 300px; }
-        .loader {
-            border: 4px solid #f3f3f3; border-top: 4px solid #15803d; border-radius: 50%;
-            width: 30px; height: 30px; animation: spin 0.8s linear infinite; margin: 0 auto 12px;
-        }
+        /* Modal Styles */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; }
+        .modal.hidden { display: none; }
+        .modal-content { background: var(--bg-card); width: 100%; max-width: 420px; padding: 22px; border-radius: 16px; border: 1px solid #2a3942; box-shadow: 0 10px 30px rgba(0,0,0,0.6); max-height: 90vh; overflow-y: auto; text-align: center; }
+        .modal-content h3 { color: var(--primary); margin-bottom: 15px; font-size: 18px; }
+        .modal-content input, .modal-content select, .modal-content textarea { width: 100%; padding: 12px; margin-bottom: 12px; background: var(--bg-input); border: 1px solid #2a3942; border-radius: 8px; color: #fff; font-size: 13px; outline: none; text-align: left; }
+        .modal-content textarea { resize: none; height: 70px; }
+        .modal-btns { display: flex; gap: 10px; }
+        .btn-submit { background: var(--primary); color: #111b21; font-weight: bold; border: none; padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; }
+        .btn-close { background: #374151; color: #fff; border: none; padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; }
+        
+        /* Countdown Timer Box */
+        #countdownModal .modal-content { text-align: center; padding: 30px; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #202c33; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<div class="navbar">
-    <span>💬 JoinChatGroups</span>
-    <span class="btn-add-submit" onclick="toggleSubmitForm()">+ Submit Group</span>
-</div>
-
-<div class="hero">
-    <h1>WhatsApp Group Links 2026</h1>
-    <h2>1,000+ Active Invite Links</h2>
-    <p>Find & join verified WhatsApp groups for online earning, crypto, gaming, and friendship.</p>
-    <input type="text" class="search-input" placeholder="Search group by name..." id="searchInput" onkeyup="filterGroups()">
-</div>
-
-<div class="main-body">
-
-    <!-- Group Submit Form -->
-    <div class="submit-card" id="submitForm">
-        <h3>Add Your WhatsApp Group</h3>
-        <input type="text" id="newGroupName" placeholder="Group Name">
-        <input type="text" id="newGroupLink" placeholder="WhatsApp Group Link (https://chat...)">
-        <button class="btn-join" onclick="addNewGroup()">Add Group Now</button>
+<div class="wrapper">
+    <!-- VIP Header -->
+    <div class="header">
+        <h1>WhatsApp Group Links 2026</h1>
+        <p>🔥 Active Verified Invite Links • Join & Grow</p>
+        <button class="btn-add-glow" onclick="openModal()">➕ Add Your Group Now</button>
     </div>
 
-    <div class="section-title">Active Invite Links</div>
-    <div class="groups-list" id="groupsList"></div>
+    <!-- Search Input -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search group by name..." onkeyup="filterGroups()">
+    </div>
+
+    <div class="stats-bar">
+        <span>📂 Active Groups: <b id="groupCount">12</b></span>
+        <span>⚡ Verified & Live</span>
+    </div>
+
+    <!-- Group List Container -->
+    <div id="groupContainer"></div>
 </div>
 
-<div class="popup-overlay" id="popup">
-    <div class="popup-card">
-        <div class="loader"></div>
-        <h3 style="font-size: 15px; color: #0f172a; margin-bottom: 4px;">Connecting to WhatsApp...</h3>
-        <p style="font-size: 12px; color: #64748b;">Opening group link in 5 seconds</p>
+<!-- Add Group Modal -->
+<div id="addGroupModal" class="modal hidden">
+    <div class="modal-content" style="text-align: left;">
+        <h3>🚀 Add Your WhatsApp Group</h3>
+        <input type="text" id="groupNameInput" placeholder="Group Name (e.g. My Crypto Club)">
+        <select id="groupCategory">
+            <option value="WhatsApp Group">WhatsApp Group</option>
+            <option value="Crypto & Trading">Crypto & Trading</option>
+            <option value="Friendship & Chat">Friendship & Chat</option>
+            <option value="Online Earning">Online Earning</option>
+            <option value="Gaming & Esports">Gaming & Esports</option>
+        </select>
+        <textarea id="groupDescInput" placeholder="Short Description (e.g. Active members only)"></textarea>
+        <input type="url" id="groupLinkInput" placeholder="WhatsApp Invite Link (https://chat.whatsapp.com/...)">
+        
+        <div class="modal-btns">
+            <button class="btn-submit" onclick="submitNewGroup()">Submit Live 🚀</button>
+            <button class="btn-close" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- 5 Seconds Countdown Modal -->
+<div id="countdownModal" class="modal hidden">
+    <div class="modal-content">
+        <h3 style="color: #f59e0b;">⏳ Please Wait...</h3>
+        <p style="font-size: 13px; color: #d1d7db; margin-bottom: 10px;">Adsterra ad is loading. Your group link will open in:</p>
+        <div class="spinner"></div>
+        <h1 id="timerNumber" style="font-size: 36px; color: var(--primary); margin: 10px 0;">5</h1>
+        <p style="font-size: 11px; color: #8696a0;">Don't close this window.</p>
     </div>
 </div>
 
 <script>
-    var adsterraLink = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
-    var realWhatsappLink = "Https://chat.whatsapp.com/Es4Yz8gBgQVCCPBpztFq1i?s=cl&p=a&mlu=4&ilr=4";
+    // Adsterra Ad Link
+    const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
 
-    var categories = [
-        "VIP Online Earning & Friendship 🚀",
-        "Daily Crypto & Forex Trading Signals 📈",
-        "Pakistani & Indian Active Chat Club 🤝",
-        "YouTube Sub4Sub Permanent Members ▶",
-        "Pakistani Overseas Job Alerts 💼",
-        "Pubg Mobile & FreeFire Tournament 🎮",
-        "Ludo King Official Gaming Group 🎲",
-        "TikTok Viral Tricks & Videos 🎬"
+    // Aapke diye gaye exact 12 asli WhatsApp group links (Inke naam aur DP automatic fetch honge)
+    let defaultLinks = [
+        "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4",
+        "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
     ];
 
-    var container = document.getElementById('groupsList');
-    var htmlContent = '';
+    async function loadGroups() {
+        let container = document.getElementById('groupContainer');
+        let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
+        
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading active groups & names...</p>";
 
-    // 1000 Groups Auto Generator (Fast Load)
-    for (var i = 1; i <= 1000; i++) {
-        var groupName = categories[i % categories.length] + " #" + i;
-        htmlContent += `
-            <div class="group-item">
-                <div class="group-title">${groupName}</div>
-                <div class="group-sub">👥 User Submitted • Active Members</div>
-                <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-            </div>
-        `;
-    }
-    container.innerHTML = htmlContent;
-
-    function handleJoin() {
-        window.open(adsterraLink, '_blank');
-        document.getElementById('popup').style.display = 'flex';
-        setTimeout(function() {
-            window.location.href = realWhatsappLink;
-        }, 5000);
-    }
-
-    function toggleSubmitForm() {
-        var form = document.getElementById('submitForm');
-        form.style.display = form.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function addNewGroup() {
-        var name = document.getElementById('newGroupName').value;
-        var link = document.getElementById('newGroupLink').value;
-
-        if (name && link) {
-            var newCard = document.createElement('div');
-            newCard.className = 'group-item';
-            newCard.innerHTML = `
-                <div class="group-title">${name} 🆕</div>
-                <div class="group-sub">👥 User Submitted Just Now</div>
-                <button class="btn-join" onclick="handleJoin()">Join Now ↗</button>
-            `;
-            container.insertBefore(newCard, container.firstChild);
+        let loadedDefaultGroups = [];
+        
+        // 12 default links ka real title aur DP automatic fetch karna
+        for (let i = 0; i < defaultLinks.length; i++) {
+            let link = defaultLinks[i];
+            let title = `WhatsApp Active Group #${i+1}`;
+            let dp = "";
+            let desc = "Active verified group. Join now for daily updates.";
             
-            document.getElementById('newGroupName').value = '';
-            document.getElementById('newGroupLink').value = '';
-            toggleSubmitForm();
-            alert("Group added successfully to the top!");
-        } else {
-            alert("Please enter both group name and link.");
+            try {
+                let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
+                let json = await res.json();
+                if(json.status === 'success') {
+                    if(json.data.title) title = json.data.title;
+                    if(json.data.description) desc = json.data.description;
+                    if(json.data.image) dp = json.data.image.url;
+                }
+            } catch(e) {
+                console.log("Fetch error, using default fallback");
+            }
+
+            loadedDefaultGroups.push({
+                title: title,
+                cat: "WhatsApp Group",
+                members: "500+ Members",
+                desc: desc,
+                link: link,
+                dp: dp
+            });
         }
+
+        let allGroups = [...savedGroups, ...loadedDefaultGroups];
+        renderGroups(allGroups);
+    }
+
+    function renderGroups(list) {
+        let container = document.getElementById('groupContainer');
+        container.innerHTML = "";
+        document.getElementById('groupCount').innerText = list.length;
+
+        if(list.length === 0) {
+            container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>No groups found.</p>";
+            return;
+        }
+
+        list.forEach((g) => {
+            let card = document.createElement('div');
+            card.className = 'group-card';
+            
+            let dpHtml = '';
+            if (g.dp && g.dp.startsWith('http')) {
+                dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'whatsapp-fallback\'><svg viewBox=\'0 0 24 24\' width=\'28\' height=\'28\' fill=\'#00a884\'><path d=\'M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z\'/></svg></div>';">`;
+            } else {
+                dpHtml = `<div class="whatsapp-fallback">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="#00a884"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+                </div>`;
+            }
+
+            card.innerHTML = `
+                <div class="group-dp-container">${dpHtml}</div>
+                <div class="group-info">
+                    <div class="card-top">
+                        <span class="badge">📂 ${g.cat}</span>
+                        <span class="members-count">👥 ${g.members}</span>
+                    </div>
+                    <div class="group-title">${g.title}</div>
+                    <div class="group-desc">${g.desc}</div>
+                    <button onclick="startJoinProcess('${g.link}')" class="btn-join">Join Now ↗</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // 5-Second Adsterra Timer Logic on Join Click
+    function startJoinProcess(groupUrl) {
+        window.open(ADSTERRA_LINK, '_blank');
+
+        let modal = document.getElementById('countdownModal');
+        let timerNum = document.getElementById('timerNumber');
+        let timeLeft = 5;
+        timerNum.innerText = timeLeft;
+        modal.classList.remove('hidden');
+
+        let countdownInterval = setInterval(() => {
+            timeLeft--;
+            if (timeLeft > 0) {
+                timerNum.innerText = timeLeft;
+            } else {
+                clearInterval(countdownInterval);
+                modal.classList.add('hidden');
+                window.open(groupUrl, '_blank');
+            }
+        }, 1000);
     }
 
     function filterGroups() {
-        var input = document.getElementById('searchInput').value.toLowerCase();
-        var cards = document.getElementsByClassName('group-item');
-        for (var i = 0; i < cards.length; i++) {
-            var title = cards[i].getElementsByClassName('group-title')[0].innerText.toLowerCase();
-            if (title.indexOf(input) > -1) {
-                cards[i].style.display = "block";
+        let query = document.getElementById('searchInput').value.toLowerCase();
+        let cardElements = document.querySelectorAll('.group-card');
+        cardElements.forEach(card => {
+            let titleText = card.querySelector('.group-title').innerText.toLowerCase();
+            if(titleText.includes(query)) {
+                card.style.display = "flex";
             } else {
-                cards[i].style.display = "none";
+                card.style.display = "none";
             }
-        }
+        });
     }
+
+    function openModal() { document.getElementById('addGroupModal').classList.remove('hidden'); }
+    function closeModal() { document.getElementById('addGroupModal').classList.add('hidden'); }
+
+    // User submits group -> User types custom name, DP fetched automatically from link
+    async function submitNewGroup() {
+        let groupName = document.getElementById('groupNameInput').value.trim();
+        let category = document.getElementById('groupCategory').value;
+        let desc = document.getElementById('groupDescInput').value.trim();
+        let link = document.getElementById('groupLinkInput').value.trim();
+
+        if(!groupName) {
+            alert("Please enter the group name!");
+            return;
+        }
+        if(!link) {
+            alert("Please enter a WhatsApp group link!");
+            return;
+        }
+
+        let submitBtn = document.querySelector('.btn-submit');
+        submitBtn.innerText = "Fetching DP & Saving...";
+
+        let fetchedDp = "";
+        let fetchedDesc = desc || "Active community group.";
+
+        try {
+            let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
+            let json = await res.json();
+            if(json.status === 'success') {
+                if(json.data.image) fetchedDp = json.data.image.url;
+                if(!desc && json.data.description) fetchedDesc = json.data.description;
+            }
+        } catch(e) {
+            console.log("DP fetch fallback used");
+        }
+
+        let newGroup = {
+            title: groupName, // User-defined custom group name
+            cat: category,
+            members: "500+ Active Members",
+            desc: fetchedDesc,
+            link: link,
+            dp: fetchedDp // Automatically fetched DP from link
+        };
+
+        // 1. Fौरन Adsterra Ad khulega
+        window.open(ADSTERRA_LINK, '_blank');
+
+        // 2. LocalStorage mein permanently save hoga
+        let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
+        savedGroups.unshift(newGroup);
+        localStorage.setItem('user_added_whatsapp_groups', JSON.stringify(savedGroups));
+
+        // Reset fields & close modal
+        document.getElementById('groupNameInput').value = '';
+        document.getElementById('groupDescInput').value = '';
+        document.getElementById('groupLinkInput').value = '';
+        submitBtn.innerText = "Submit Live 🚀";
+        closeModal();
+
+        alert("🎉 Group added successfully! Your custom name and fetched DP are now live permanently.");
+        loadGroups();
+    }
+
+    window.onload = loadGroups;
 </script>
 
 </body>
-</html>
+                </html>
+                                                        
