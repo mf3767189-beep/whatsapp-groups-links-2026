@@ -79,7 +79,7 @@
     </div>
 
     <div class="stats-bar">
-        <span>📂 Active Groups: <b id="groupCount">12</b></span>
+        <span>📂 Active Groups: <b id="groupCount">0</b></span>
         <span>⚡ Verified & Live</span>
     </div>
 
@@ -101,13 +101,27 @@
     </div>
 </div>
 
-<script>
-    // Adsterra Ad Link
-    const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
+<!-- Firebase & Main App Logic -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+    const firebaseConfig = {
+      apiKey: "AIzaSyDaFSzQ0hy9w3XaCqGmJ9hMF2sXSzLRjlU",
+      authDomain: "addearn-6abfb.firebaseapp.com",
+      projectId: "addearn-6abfb",
+      storageBucket: "addearn-6abfb.firebasestorage.app",
+      messagingSenderId: "255860665512",
+      appId: "1:255860665512:web:461b8a6e4f6cc9c076e69d",
+      measurementId: "G-L398EDGHH2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
     let pendingGroupUrl = null;
 
-    // 12 Default WhatsApp Group Links
     let defaultLinks = [
         "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
         "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
@@ -125,36 +139,38 @@
 
     async function loadGroups() {
         let container = document.getElementById('groupContainer');
-        let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
-        
-        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading groups...</p>";
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading groups from Cloud...</p>";
 
-        let loadedDefaultGroups = [];
-        
-        for (let i = 0; i < defaultLinks.length; i++) {
-            let link = defaultLinks[i];
-            let title = `Active WhatsApp Group #${i+1}`;
-            let dp = "";
-            
-            try {
-                let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
-                let json = await res.json();
-                if(json.status === 'success') {
-                    if(json.data.title) title = json.data.title;
-                    if(json.data.image) dp = json.data.image.url;
-                }
-            } catch(e) {
-                console.log("Fetch error");
-            }
-
-            loadedDefaultGroups.push({
-                title: title,
-                link: link,
-                dp: dp
+        let firebaseGroups = [];
+        try {
+            let querySnapshot = await getDocs(collection(db, "whatsapp_groups"));
+            querySnapshot.forEach((doc) => {
+                firebaseGroups.push(doc.data());
             });
+        } catch(e) {
+            console.log("Firebase fetch error: ", e);
         }
 
-        let allGroups = [...savedGroups, ...loadedDefaultGroups];
+        let loadedDefaultGroups = [];
+        // If firebase is empty, load default links first time
+        if(firebaseGroups.length === 0) {
+            for (let i = 0; i < defaultLinks.length; i++) {
+                let link = defaultLinks[i];
+                let title = `Active WhatsApp Group #${i+1}`;
+                let dp = "";
+                try {
+                    let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
+                    let json = await res.json();
+                    if(json.status === 'success') {
+                        if(json.data.title) title = json.data.title;
+                        if(json.data.image) dp = json.data.image.url;
+                    }
+                } catch(e) {}
+                loadedDefaultGroups.push({ title: title, link: link, dp: dp });
+            }
+        }
+
+        let allGroups = [...firebaseGroups, ...loadedDefaultGroups];
         renderGroups(allGroups);
     }
 
@@ -194,10 +210,8 @@
         });
     }
 
-    // Smart Ad & Auto-Redirect Logic
     function startJoinProcess(groupUrl) {
         let shownGroups = JSON.parse(localStorage.getItem('ad_shown_groups')) || [];
-
         if (!shownGroups.includes(groupUrl)) {
             window.open(ADSTERRA_LINK, '_blank');
             shownGroups.push(groupUrl);
@@ -229,36 +243,27 @@
         });
     }
 
-    function openModal() { document.getElementById('addGroupModal').classList.remove('hidden'); }
-    function closeModal() { document.getElementById('addGroupModal').classList.add('hidden'); }
+    window.openModal = function() { document.getElementById('addGroupModal').classList.remove('hidden'); }
+    window.closeModal = function() { document.getElementById('addGroupModal').classList.add('hidden'); }
 
-    async function submitNewGroup() {
+    window.submitNewGroup = async function() {
         let groupName = document.getElementById('groupNameInput').value.trim();
         let link = document.getElementById('groupLinkInput').value.trim();
 
-        if(!groupName) {
-            alert("Please enter the group name!");
-            return;
-        }
-        if(!link) {
-            alert("Please enter the WhatsApp group link!");
-            return;
-        }
+        if(!groupName) { alert("Please enter the group name!"); return; }
+        if(!link) { alert("Please enter the WhatsApp group link!"); return; }
 
         let submitBtn = document.querySelector('.btn-submit');
-        submitBtn.innerText = "Fetching DP...";
+        submitBtn.innerText = "Saving to Cloud...";
 
         let fetchedDp = "";
-
         try {
             let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
             let json = await res.json();
             if(json.status === 'success' && json.data.image) {
                 fetchedDp = json.data.image.url;
             }
-        } catch(e) {
-            console.log("DP fetch error");
-        }
+        } catch(e) {}
 
         let newGroup = {
             title: groupName,
@@ -266,27 +271,26 @@
             dp: fetchedDp
         };
 
-        // 1. Save to LocalStorage FIRST so it doesn't get lost
-        let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
-        savedGroups.unshift(newGroup);
-        localStorage.setItem('user_added_whatsapp_groups', JSON.stringify(savedGroups));
+        try {
+            // Save to Firebase Firestore Cloud Database
+            await addDoc(collection(db, "whatsapp_groups"), newGroup);
+            
+            document.getElementById('groupNameInput').value = '';
+            document.getElementById('groupLinkInput').value = '';
+            submitBtn.innerText = "Submit Live 🚀";
+            closeModal();
 
-        // 2. Reset modal & reload list immediately
-        document.getElementById('groupNameInput').value = '';
-        document.getElementById('groupLinkInput').value = '';
-        submitBtn.innerText = "Submit Live 🚀";
-        closeModal();
-        loadGroups();
-
-        // 3. Open Ad window AFTER saving and updating UI
-        window.open(ADSTERRA_LINK, '_blank');
-
-        alert("🎉 Your group has been successfully published live!");
+            window.open(ADSTERRA_LINK, '_blank');
+            alert("🎉 Your group has been successfully published live on Cloud for everyone!");
+            loadGroups();
+        } catch (e) {
+            alert("Error saving group: " + e.message);
+            submitBtn.innerText = "Submit Live 🚀";
+        }
     }
 
     window.onload = loadGroups;
 </script>
 
 </body>
-    </html>
-    
+</html>
