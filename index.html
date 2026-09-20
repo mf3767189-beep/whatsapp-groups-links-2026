@@ -266,23 +266,27 @@
             dp: fetchedDp
         };
 
-        window.open(ADSTERRA_LINK, '_blank');
-
+        // 1. Save to LocalStorage FIRST so it doesn't get lost
         let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
         savedGroups.unshift(newGroup);
         localStorage.setItem('user_added_whatsapp_groups', JSON.stringify(savedGroups));
 
+        // 2. Reset modal & reload list immediately
         document.getElementById('groupNameInput').value = '';
         document.getElementById('groupLinkInput').value = '';
         submitBtn.innerText = "Submit Live 🚀";
         closeModal();
+        loadGroups();
+
+        // 3. Open Ad window AFTER saving and updating UI
+        window.open(ADSTERRA_LINK, '_blank');
 
         alert("🎉 Your group has been successfully published live!");
-        loadGroups();
     }
 
     window.onload = loadGroups;
 </script>
 
 </body>
-</html>
+    </html>
+    
