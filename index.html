@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,9 +47,8 @@
         .whatsapp-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: #1f2c34; }
 
         .group-info { flex: 1; min-width: 0; }
-        .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .group-title { font-size: 15px; font-weight: bold; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .members-count { font-size: 11px; color: var(--accent); flex-shrink: 0; }
+        .card-top { margin-bottom: 8px; }
+        .group-title { font-size: 15px; font-weight: bold; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
         .btn-join { display: block; width: 100%; background: var(--primary); color: #111b21; text-align: center; padding: 8px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 12px; transition: 0.2s; border: none; cursor: pointer; }
         .btn-join:hover { background: #008f72; color: #fff; }
 
@@ -71,17 +70,17 @@
     <div class="header">
         <h1>WhatsApp Group Links 2026</h1>
         <p>🔥 Active Verified Invite Links • Join & Grow</p>
-        <button class="btn-add-glow" onclick="openModal()">➕ अपना ग्रुप जोड़ें</button>
+        <button class="btn-add-glow" onclick="openModal()">➕ Add Group</button>
     </div>
 
     <!-- Search Input -->
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 ग्रुप के नाम से खोजें..." onkeyup="filterGroups()">
+        <input type="text" id="searchInput" placeholder="🔍 Search groups by name..." onkeyup="filterGroups()">
     </div>
 
     <div class="stats-bar">
-        <span>📂 सक्रिय ग्रुप: <b id="groupCount">12</b></span>
-        <span>⚡ सत्यापित और लाइव</span>
+        <span>📂 Active Groups: <b id="groupCount">12</b></span>
+        <span>⚡ Verified & Live</span>
     </div>
 
     <!-- Group List Container -->
@@ -91,13 +90,13 @@
 <!-- Add Group Modal -->
 <div id="addGroupModal" class="modal hidden">
     <div class="modal-content" style="text-align: left;">
-        <h3>🚀 अपना व्हाट्सएप ग्रुप जोड़ें</h3>
-        <input type="text" id="groupNameInput" placeholder="ग्रुप का नाम (जैसे: My Crypto Club)">
-        <input type="url" id="groupLinkInput" placeholder="व्हाट्सएप इनवाइट लिंक (https://chat.whatsapp.com/...)">
+        <h3>🚀 Add Your WhatsApp Group</h3>
+        <input type="text" id="groupNameInput" placeholder="Group Name (e.g., My Crypto Club)">
+        <input type="url" id="groupLinkInput" placeholder="WhatsApp Invite Link (https://chat.whatsapp.com/...)">
         
         <div class="modal-btns">
-            <button class="btn-submit" onclick="submitNewGroup()">लाइव सबमिट करें 🚀</button>
-            <button class="btn-close" onclick="closeModal()">रद्द करें</button>
+            <button class="btn-submit" onclick="submitNewGroup()">Submit Live 🚀</button>
+            <button class="btn-close" onclick="closeModal()">Cancel</button>
         </div>
     </div>
 </div>
@@ -108,7 +107,7 @@
 
     let pendingGroupUrl = null;
 
-    // 12 डिफ़ॉल्ट व्हाट्सएप ग्रुप लिंक्स
+    // 12 Default WhatsApp Group Links
     let defaultLinks = [
         "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
         "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
@@ -128,13 +127,13 @@
         let container = document.getElementById('groupContainer');
         let savedGroups = JSON.parse(localStorage.getItem('user_added_whatsapp_groups')) || [];
         
-        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>ग्रुप्स लोड हो रहे हैं...</p>";
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading groups...</p>";
 
         let loadedDefaultGroups = [];
         
         for (let i = 0; i < defaultLinks.length; i++) {
             let link = defaultLinks[i];
-            let title = `सक्रिय व्हाट्सएप ग्रुप #${i+1}`;
+            let title = `Active WhatsApp Group #${i+1}`;
             let dp = "";
             
             try {
@@ -150,7 +149,6 @@
 
             loadedDefaultGroups.push({
                 title: title,
-                members: "500+ सदस्य",
                 link: link,
                 dp: dp
             });
@@ -166,7 +164,7 @@
         document.getElementById('groupCount').innerText = list.length;
 
         if(list.length === 0) {
-            container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>कोई ग्रुप नहीं मिला।</p>";
+            container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>No groups found.</p>";
             return;
         }
 
@@ -179,7 +177,7 @@
                 dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'whatsapp-fallback\'><svg viewBox=\'0 0 24 24\' width=\'28\' height=\'28\' fill=\'#00a884\'><path d=\'M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z\'/></svg></div>';">`;
             } else {
                 dpHtml = `<div class="whatsapp-fallback">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="#00a884"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z\'/></svg>
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="#00a884"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.42 0-2.81-.38-4.03-1.1l-.29-.17-3.03.79.81-2.95-.19-.31c-.81-1.31-1.23-2.83-1.23-4.38 0-4.57 3.72-8.29 8.29-8.29 2.21 0 4.29.86 5.85 2.42 1.56 1.56 2.42 3.64 2.42 5.85 0 4.57-3.72 8.29-8.29 8.29zm4.55-6.24c-.25-.13-1.48-.73-1.71-.82-.23-.09-.39-.13-.56.13-.17.25-.64.82-.79.99-.15.17-.31.19-.56.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.52.11-.11.25-.31.38-.47.13-.17.17-.29.25-.49.08-.21.04-.39-.02-.55-.06-.17-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
                 </div>`;
             }
 
@@ -188,9 +186,8 @@
                 <div class="group-info">
                     <div class="card-top">
                         <span class="group-title">${g.title}</span>
-                        <span class="members-count">👥 ${g.members}</span>
                     </div>
-                    <button onclick="startJoinProcess('${g.link}')" class="btn-join">अभी ज्वाइन करें ↗</button>
+                    <button onclick="startJoinProcess('${g.link}')" class="btn-join">Join Now ↗</button>
                 </div>
             `;
             container.appendChild(card);
@@ -202,24 +199,19 @@
         let shownGroups = JSON.parse(localStorage.getItem('ad_shown_groups')) || [];
 
         if (!shownGroups.includes(groupUrl)) {
-            // First time clicking this specific group: Open Ad tab, save group URL to open on return
             window.open(ADSTERRA_LINK, '_blank');
             shownGroups.push(groupUrl);
             localStorage.setItem('ad_shown_groups', JSON.stringify(shownGroups));
-            
-            // Set pending group so when user comes back to this tab, it auto opens
             pendingGroupUrl = groupUrl;
         } else {
-            // If already shown ad for this group before, open directly
             window.open(groupUrl, '_blank');
         }
     }
 
-    // When user comes back to the website from the ad tab, open the WhatsApp group automatically
     window.addEventListener('focus', function() {
         if (pendingGroupUrl) {
             let urlToOpen = pendingGroupUrl;
-            pendingGroupUrl = null; // Clear it so it doesn't trigger again unnecessarily
+            pendingGroupUrl = null;
             window.open(urlToOpen, '_blank');
         }
     });
@@ -245,16 +237,16 @@
         let link = document.getElementById('groupLinkInput').value.trim();
 
         if(!groupName) {
-            alert("कृपया ग्रुप का नाम दर्ज करें!");
+            alert("Please enter the group name!");
             return;
         }
         if(!link) {
-            alert("कृपया व्हाट्सएप ग्रुप लिंक दर्ज करें!");
+            alert("Please enter the WhatsApp group link!");
             return;
         }
 
         let submitBtn = document.querySelector('.btn-submit');
-        submitBtn.innerText = "डीपी फेच हो रही है...";
+        submitBtn.innerText = "Fetching DP...";
 
         let fetchedDp = "";
 
@@ -270,7 +262,6 @@
 
         let newGroup = {
             title: groupName,
-            members: "500+ सक्रिय सदस्य",
             link: link,
             dp: fetchedDp
         };
@@ -283,10 +274,10 @@
 
         document.getElementById('groupNameInput').value = '';
         document.getElementById('groupLinkInput').value = '';
-        submitBtn.innerText = "लाइव सबमिट करें 🚀";
+        submitBtn.innerText = "Submit Live 🚀";
         closeModal();
 
-        alert("🎉 आपका ग्रुप सफलतापूर्वक लाइव कर दिया गया है!");
+        alert("🎉 Your group has been successfully published live!");
         loadGroups();
     }
 
