@@ -123,19 +123,20 @@
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
     let pendingGroupUrl = null;
 
-    let defaultLinks = [
-        "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
+    // Default 12 Groups List
+    let defaultGroups = [
+        { title: "Active WhatsApp Group #1", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #2", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #3", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #4", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #5", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #6", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #7", link: "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #8", link: "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #9", link: "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #10", link: "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #11", link: "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Active WhatsApp Group #12", link: "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4", dp: "" }
     ];
 
     async function loadGroups() {
@@ -156,25 +157,8 @@
             console.log("Firebase fetch error: ", e);
         }
 
-        let loadedDefaultGroups = [];
-        if(firebaseGroups.length === 0) {
-            for (let i = 0; i < defaultLinks.length; i++) {
-                let link = defaultLinks[i];
-                let title = `Active WhatsApp Group #${i+1}`;
-                let dp = "";
-                try {
-                    let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
-                    let json = await res.json();
-                    if(json.status === 'success') {
-                        if(json.data.title) title = json.data.title;
-                        if(json.data.image) dp = json.data.image.url;
-                    }
-                } catch(e) {}
-                loadedDefaultGroups.push({ title: title, link: link, dp: dp });
-            }
-        }
-
-        let allGroups = [...firebaseGroups, ...loadedDefaultGroups];
+        // Combine Firebase (new user added) groups and Default groups together
+        let allGroups = [...firebaseGroups, ...defaultGroups];
         renderGroups(allGroups);
     }
 
@@ -298,4 +282,5 @@
 </script>
 
 </body>
-</html>
+    </html>
+    
