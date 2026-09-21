@@ -72,7 +72,6 @@
         <button class="btn-add-glow" onclick="openModal()">➕ Add Group</button>
     </div>
 
-    <!-- Google ke liye original text content taaki low quality error na aaye -->
     <div class="seo-intro">
         Welcome to the ultimate <b>WhatsApp Group Links Directory</b>. Find and join active groups for community chatting, learning, and sharing. You can also list your group instantly!
     </div>
@@ -129,7 +128,6 @@
     const db = getDatabase(app);
 
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
-    let pendingGroupUrl = null;
 
     let defaultGroupLinks = [
         "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
@@ -219,25 +217,27 @@
                     <div class="card-top">
                         <span class="group-title">${g.title}</span>
                     </div>
-                    <button onclick="startJoinProcess('${g.link}')" class="btn-join">Join Now ↗</button>
+                    <button onclick="handleJoinClick('${g.link}')" class="btn-join">Join Now ↗</button>
                 </div>
             `;
             container.appendChild(card);
         });
     }
 
-    window.startJoinProcess = function(groupUrl) {
-        window.open(ADSTERRA_LINK, '_blank');
-        pendingGroupUrl = groupUrl;
-    }
-
-    window.addEventListener('focus', function() {
-        if (pendingGroupUrl) {
-            let urlToOpen = pendingGroupUrl;
-            pendingGroupUrl = null;
-            window.open(urlToOpen, '_blank');
+    // نیا الٹرنیٹنگ لاجیک (پہلا کلک ایڈ، دوسرا کلک واٹس ایپ گروپ)
+    window.handleJoinClick = function(groupUrl) {
+        let clickState = localStorage.getItem('click_toggle_state');
+        
+        if (!clickState || clickState === 'group') {
+            // پہلی بار یا اگلی بار: ایڈزٹرّا کھولیں
+            localStorage.setItem('click_toggle_state', 'ad');
+            window.open(ADSTERRA_LINK, '_blank');
+        } else {
+            // دوسری بار: واٹس ایپ گروپ کھولیں اور اسٹیٹ ری سیٹ کریں
+            localStorage.setItem('click_toggle_state', 'group');
+            window.open(groupUrl, '_blank');
         }
-    });
+    }
 
     function filterGroups() {
         let query = document.getElementById('searchInput').value.toLowerCase();
@@ -289,4 +289,5 @@
 </script>
 
 </body>
-</html>
+        </html>
+    
