@@ -7,8 +7,16 @@
     <meta name="description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment. Submit your own WhatsApp group for free!">
     <meta name="keywords" content="whatsapp group links, active whatsapp groups, join whatsapp group, crypto whatsapp group, study group links, tech whatsapp groups">
     <meta name="robots" content="index, follow">
-    <!-- WhatsApp Favicon Icon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300a884'><path d='M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2z'/></svg>">
+    
+    <!-- Open Graph Tags (فیس بک اور واٹس ایپ پر شیئر کرنے کے لیے پروفیشنل لک) -->
+    <meta property="og:title" content="WhatsApp Group Links 2026 - Join Active Invite Links">
+    <meta property="og:description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment.">
+    <meta property="og:type" content="website">
+
+    <!-- اصلی واٹس ایپ جیسی گول سبز آئیکن (Favicon) -->
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+
     <style>
         :root {
             --primary: #00a884;
@@ -257,15 +265,18 @@
 
     window.submitNewGroup = async function() {
         let groupName = document.getElementById('groupNameInput').value.trim();
-        let link = document.getElementById('groupLinkInput').value.trim();
+        let link = document.getElementById('groupLinkInput5').value.trim() || document.getElementById('groupLinkInput').value.trim();
+
+        // Fix standard input target
+        let linkInputVal = document.getElementById('groupLinkInput').value.trim();
 
         if(!groupName) { alert("Please enter the group name!"); return; }
-        if(!link) { alert("Please enter the WhatsApp group link!"); return; }
+        if(!linkInputVal) { alert("Please enter the WhatsApp group link!"); return; }
 
         let submitBtn = document.querySelector('.btn-submit');
         submitBtn.innerText = "Fetching DP & Saving...";
 
-        let groupData = await fetchMetadata(link, groupName);
+        let groupData = await fetchMetadata(linkInputVal, groupName);
 
         try {
             const groupsRef = ref(db, 'whatsapp_groups');
@@ -280,7 +291,7 @@
             alert("🎉 Your group has been successfully published live with custom title & real DP!");
             loadGroups();
         } catch (e) {
-            alert("Error saving group: " + e.message);
+            alert("Error saving error: " + e.message);
             submitBtn.innerText = "Submit Live 🚀";
         }
     }
@@ -289,5 +300,4 @@
 </script>
 
 </body>
-                                 </html>
-                                                                                                                                                         
+</html>
