@@ -265,9 +265,6 @@
 
     window.submitNewGroup = async function() {
         let groupName = document.getElementById('groupNameInput').value.trim();
-        let link = document.getElementById('groupLinkInput5').value.trim() || document.getElementById('groupLinkInput').value.trim();
-
-        // Fix standard input target
         let linkInputVal = document.getElementById('groupLinkInput').value.trim();
 
         if(!groupName) { alert("Please enter the group name!"); return; }
@@ -300,4 +297,5 @@
 </script>
 
 </body>
-</html>
+                </html>
+    
