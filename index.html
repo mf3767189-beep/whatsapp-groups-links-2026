@@ -138,8 +138,8 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // Updated Adsterra High-Paying Link
-    const ADSTERRA_LINK = "https://sixstale.com/f3efetw5?key=3ceb773fc9c7ca64b0cca412512cf6dc";
+    // Updated New Adsterra Smart Link
+    const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
 
     let defaultGroupLinks = [
         "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
@@ -271,7 +271,6 @@
         if(!groupName) { alert("Please enter the group name!"); return; }
         if(!linkInputVal) { alert("Please enter the WhatsApp group link!"); return; }
 
-        // Strictly accept only WhatsApp invite links
         if(!linkInputVal.includes("chat.whatsapp.com")) {
             alert("❌ Invalid Link! Only official WhatsApp group invite links (chat.whatsapp.com) are allowed.");
             return;
@@ -307,4 +306,5 @@
 <script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
 
 </body>
-</html>
+            </html>
+            
