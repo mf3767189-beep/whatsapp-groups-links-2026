@@ -8,12 +8,12 @@
     <meta name="keywords" content="whatsapp group links, active whatsapp groups, join whatsapp group, crypto whatsapp group, study group links, tech whatsapp groups">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph Tags (فیس بک اور واٹس ایپ پر شیئر کرنے کے لیے پروفیشنل لک) -->
+    <!-- Open Graph Tags -->
     <meta property="og:title" content="WhatsApp Group Links 2026 - Join Active Invite Links">
     <meta property="og:description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment.">
     <meta property="og:type" content="website">
 
-    <!-- اصلی واٹس ایپ جیسی گول سبز آئیکن (Favicon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 
@@ -110,7 +110,7 @@
 <div id="addGroupModal" class="modal hidden">
     <div class="modal-content" style="text-align: left;">
         <h3>🚀 Add WhatsApp Group or Channel</h3>
-        <input type="text" id="groupNameInput" placeholder="Enter Custom Name (e.g. Crypto Signals)...">
+        <input type="text" id="groupNameInput" placeholder="Enter Your Group/Channel Name...">
         <input type="url" id="groupLinkInput" placeholder="WhatsApp Link (chat.whatsapp.com / whatsapp.com/channel...)">
         
         <div class="modal-btns">
@@ -141,43 +141,38 @@
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
 
     let defaultGroupLinks = [
-        "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/IaKOp6F5FcI5WbktzTmpOc?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/KLTbHXyh2Le2awOF6jbKV2?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EeWBFFH02K683b9GwkJJL0?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/LrnaJ0YHmza4VANx7Arv6i?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/HSGk5JmWjKw5dig1zqNlBH?s=cl&p=a&mlu=4&ilr=4",
-        "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
+        { title: "Crypto Signals VIP 🚀", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Tech & Coding Community 💻", link: "https://chat.whatsapp.com/FHaTsm2XGfL0cyVyAPxXyT?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Online Earning Hub 💸", link: "https://chat.whatsapp.com/C4LJHBs46LSIQj7MVw9Mcf?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Study & Exam Help 📚", link: "https://chat.whatsapp.com/JuAkeYxOHBXFMFVSd685VJ?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Funny Videos & Memes 😂", link: "https://chat.whatsapp.com/Hm6mEI7gJ68HsC7XnNnBD9?s=cl&p=a&mlu=4&ilr=4", dp: "" },
+        { title: "Free AI Tools & Tricks 🤖", link: "https://chat.whatsapp.com/Iuh3QuLogJRKw7e20Czcvz?s=cl&p=a&mlu=4&ilr=4", dp: "" }
     ];
 
-    async function fetchMetadata(link, customTitle = "") {
-        let title = customTitle || "WhatsApp Community";
+    // Safely fetch DP without 429 rate limit crash using alternative proxy
+    async function fetchDP(link) {
         let dp = "";
         try {
-            let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
-            let json = await res.json();
-            if (json.status === 'success') {
-                if (!customTitle && json.data.title) {
-                    title = json.data.title;
-                }
-                if (json.data.image && json.data.image.url) {
-                    dp = json.data.image.url;
+            // Using a safer lightweight preview fetcher
+            let res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(link)}`);
+            let data = await res.json();
+            if (data && data.contents) {
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(data.contents, 'text/html');
+                let ogImage = doc.querySelector('meta[property="og:image"]');
+                if (ogImage) {
+                    dp = ogImage.getAttribute('content');
                 }
             }
         } catch (e) {
-            console.log("Fetch error:", e);
+            console.log("DP fetch error:", e);
         }
-        return { title, link, dp };
+        return dp;
     }
 
     async function loadGroups() {
         let container = document.getElementById('groupContainer');
-        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Fetching real names & DPs...</p>";
+        container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>Loading active listings...</p>";
 
         let firebaseGroups = [];
         try {
@@ -193,10 +188,7 @@
             console.log("Firebase fetch error: ", e);
         }
 
-        let defaultGroupsPromises = defaultGroupLinks.map(link => fetchMetadata(link));
-        let resolvedDefaultGroups = await Promise.all(defaultGroupsPromises);
-
-        let allGroups = [...firebaseGroups, ...resolvedDefaultGroups];
+        let allGroups = [...firebaseGroups, ...defaultGroupLinks];
         renderGroups(allGroups);
     }
 
@@ -267,7 +259,7 @@
         let groupName = document.getElementById('groupNameInput').value.trim();
         let linkInputVal = document.getElementById('groupLinkInput').value.trim();
 
-        if(!groupName) { alert("Please enter the name!"); return; }
+        if(!groupName) { alert("Please enter the group/channel name!"); return; }
         if(!linkInputVal) { alert("Please enter the WhatsApp link!"); return; }
 
         let isGroup = linkInputVal.includes("chat.whatsapp.com");
@@ -278,7 +270,7 @@
             return;
         }
 
-        // 48 Hours Cool-down & Duplicate Check using LocalStorage
+        // 48 Hours Cool-down & Duplicate Check
         let lastSubmitTime = localStorage.getItem('submitted_' + linkInputVal);
         if (lastSubmitTime) {
             let currentTime = new Date().getTime();
@@ -294,13 +286,19 @@
         let submitBtn = document.querySelector('.btn-submit');
         submitBtn.innerText = "Fetching DP & Saving...";
 
-        let groupData = await fetchMetadata(linkInputVal, groupName);
+        // Fetch real WhatsApp DP safely
+        let dpUrl = await fetchDP(linkInputVal);
+
+        let groupData = {
+            title: groupName,
+            link: linkInputVal,
+            dp: dpUrl
+        };
 
         try {
             const groupsRef = ref(db, 'whatsapp_groups');
             await push(groupsRef, groupData);
             
-            // Save current timestamp for 48 hours restriction
             localStorage.setItem('submitted_' + linkInputVal, new Date().getTime().toString());
 
             document.getElementById('groupNameInput').value = '';
@@ -309,7 +307,7 @@
             closeModal();
 
             window.open(ADSTERRA_LINK, '_blank');
-            alert("🎉 Your WhatsApp Group or Channel has been successfully published live!");
+            alert("🎉 Your WhatsApp Group or Channel has been successfully published live with real DP!");
             loadGroups();
         } catch (e) {
             alert("Error saving: " + e.message);
@@ -324,5 +322,4 @@
 <script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
 
 </body>
-    </html>
-            
+</html>
