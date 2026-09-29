@@ -80,19 +80,19 @@
     <div class="header">
         <h1>WhatsApp Group Links 2026</h1>
         <p>🔥 Active Verified Invite Links • Join & Grow</p>
-        <button class="btn-add-glow" onclick="openModal()">➕ Add Group</button>
+        <button class="btn-add-glow" onclick="openModal()">➕ Add Group / Channel</button>
     </div>
 
     <div class="seo-intro">
-        Welcome to the ultimate <b>WhatsApp Group Links Directory</b>. Find and join active groups for community chatting, learning, and sharing. You can also list your group instantly!
+        Welcome to the ultimate <b>WhatsApp Group & Channel Links Directory</b>. Find and join active groups for community chatting, learning, and sharing. You can also list your group or channel instantly!
     </div>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 Search groups by name..." onkeyup="filterGroups()">
+        <input type="text" id="searchInput" placeholder="🔍 Search groups & channels by name..." onkeyup="filterGroups()">
     </div>
 
     <div class="stats-bar">
-        <span>📂 Active Groups: <b id="groupCount">0</b></span>
+        <span>📂 Active Listings: <b id="groupCount">0</b></span>
         <span>⚡ Verified & Live</span>
     </div>
 
@@ -109,9 +109,9 @@
 
 <div id="addGroupModal" class="modal hidden">
     <div class="modal-content" style="text-align: left;">
-        <h3>🚀 Add Your WhatsApp Group</h3>
-        <input type="text" id="groupNameInput" placeholder="Enter Your Custom Group Name...">
-        <input type="url" id="groupLinkInput" placeholder="WhatsApp Invite Link (https://chat.whatsapp.com/...)">
+        <h3>🚀 Add WhatsApp Group or Channel</h3>
+        <input type="text" id="groupNameInput" placeholder="Enter Custom Name (e.g. Crypto Signals)...">
+        <input type="url" id="groupLinkInput" placeholder="WhatsApp Link (chat.whatsapp.com / whatsapp.com/channel...)">
         
         <div class="modal-btns">
             <button class="btn-submit" onclick="submitNewGroup()">Submit Live 🚀</button>
@@ -138,7 +138,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // Updated New Adsterra Smart Link
     const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
 
     let defaultGroupLinks = [
@@ -157,7 +156,7 @@
     ];
 
     async function fetchMetadata(link, customTitle = "") {
-        let title = customTitle || "WhatsApp Group";
+        let title = customTitle || "WhatsApp Community";
         let dp = "";
         try {
             let res = await fetch(`https://api.microlink.io?url=${encodeURIComponent(link)}`);
@@ -207,7 +206,7 @@
         document.getElementById('groupCount').innerText = list.length;
 
         if(list.length === 0) {
-            container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>No groups found.</p>";
+            container.innerHTML = "<p style='text-align:center; color:#8696a0; padding:20px;'>No listings found.</p>";
             return;
         }
 
@@ -268,11 +267,15 @@
         let groupName = document.getElementById('groupNameInput').value.trim();
         let linkInputVal = document.getElementById('groupLinkInput').value.trim();
 
-        if(!groupName) { alert("Please enter the group name!"); return; }
-        if(!linkInputVal) { alert("Please enter the WhatsApp group link!"); return; }
+        if(!groupName) { alert("Please enter the name!"); return; }
+        if(!linkInputVal) { alert("Please enter the WhatsApp link!"); return; }
 
-        if(!linkInputVal.includes("chat.whatsapp.com")) {
-            alert("❌ Invalid Link! Only official WhatsApp group invite links (chat.whatsapp.com) are allowed.");
+        // Strict validation: Only allow WhatsApp Group invites or WhatsApp Channels
+        let isGroup = linkInputVal.includes("chat.whatsapp.com");
+        let isChannel = linkInputVal.includes("whatsapp.com/channel");
+
+        if(!isGroup && !isChannel) {
+            alert("❌ Invalid Link! Only official WhatsApp Group links (chat.whatsapp.com) and WhatsApp Channel links (whatsapp.com/channel) are allowed.");
             return;
         }
 
@@ -291,10 +294,10 @@
             closeModal();
 
             window.open(ADSTERRA_LINK, '_blank');
-            alert("🎉 Your group has been successfully published live with custom title & real DP!");
+            alert("🎉 Your WhatsApp Group or Channel has been successfully published live!");
             loadGroups();
         } catch (e) {
-            alert("Error saving error: " + e.message);
+            alert("Error saving: " + e.message);
             submitBtn.innerText = "Submit Live 🚀";
         }
     }
@@ -306,5 +309,5 @@
 <script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
 
 </body>
-            </html>
-            
+    </html>
+                
