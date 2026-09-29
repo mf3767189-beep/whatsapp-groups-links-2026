@@ -270,13 +270,25 @@
         if(!groupName) { alert("Please enter the name!"); return; }
         if(!linkInputVal) { alert("Please enter the WhatsApp link!"); return; }
 
-        // Strict validation: Only allow WhatsApp Group invites or WhatsApp Channels
         let isGroup = linkInputVal.includes("chat.whatsapp.com");
         let isChannel = linkInputVal.includes("whatsapp.com/channel");
 
         if(!isGroup && !isChannel) {
             alert("❌ Invalid Link! Only official WhatsApp Group links (chat.whatsapp.com) and WhatsApp Channel links (whatsapp.com/channel) are allowed.");
             return;
+        }
+
+        // 48 Hours Cool-down & Duplicate Check using LocalStorage
+        let lastSubmitTime = localStorage.getItem('submitted_' + linkInputVal);
+        if (lastSubmitTime) {
+            let currentTime = new Date().getTime();
+            let hoursPassed = (currentTime - parseInt(lastSubmitTime)) / (1000 * 60 * 60);
+            
+            if (hoursPassed < 48) {
+                let remainingHours = Math.ceil(48 - hoursPassed);
+                alert(`⚠️ This link was already added recently! You can add this same link again after ${remainingHours} hours.`);
+                return;
+            }
         }
 
         let submitBtn = document.querySelector('.btn-submit');
@@ -288,6 +300,9 @@
             const groupsRef = ref(db, 'whatsapp_groups');
             await push(groupsRef, groupData);
             
+            // Save current timestamp for 48 hours restriction
+            localStorage.setItem('submitted_' + linkInputVal, new Date().getTime().toString());
+
             document.getElementById('groupNameInput').value = '';
             document.getElementById('groupLinkInput').value = '';
             submitBtn.innerText = "Submit Live 🚀";
@@ -310,4 +325,4 @@
 
 </body>
     </html>
-                
+            
