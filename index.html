@@ -8,12 +8,12 @@
     <meta name="keywords" content="whatsapp group links, active whatsapp groups, join whatsapp group, crypto whatsapp group, study group links, tech whatsapp groups">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph Tags (فیس بک اور واٹس ایپ پر شیئر کرنے کے لیے پروفیشنل لک) -->
+    <!-- Open Graph Tags -->
     <meta property="og:title" content="WhatsApp Group Links 2026 - Join Active Invite Links">
     <meta property="og:description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment.">
     <meta property="og:type" content="website">
 
-    <!-- اصلی واٹس ایپ جیسی گول سبز آئیکن (Favicon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 
@@ -172,7 +172,7 @@
         } catch (e) {
             console.log("Fetch error:", e);
         }
-        return { title, link, dp };
+        return { title, link, dp, timestamp: Date.now() };
     }
 
     async function loadGroups() {
@@ -270,7 +270,6 @@
         if(!groupName) { alert("Please enter the name!"); return; }
         if(!linkInputVal) { alert("Please enter the WhatsApp link!"); return; }
 
-        // Strict validation: Only allow WhatsApp Group invites or WhatsApp Channels
         let isGroup = linkInputVal.includes("chat.whatsapp.com");
         let isChannel = linkInputVal.includes("whatsapp.com/channel");
 
@@ -280,11 +279,48 @@
         }
 
         let submitBtn = document.querySelector('.btn-submit');
-        submitBtn.innerText = "Fetching DP & Saving...";
-
-        let groupData = await fetchMetadata(linkInputVal, groupName);
+        submitBtn.innerText = "Checking 48h limit...";
 
         try {
+            let dbRef = ref(db);
+            let snapshot = await get(child(dbRef, "whatsapp_groups"));
+            
+            let cleanNewLink = linkInputVal.split('?')[0].trim().toLowerCase();
+            let isRestricted = false;
+
+            // ڈیفالٹ لنکس چیک کریں (یہ ہمیشہ بلاک رہیں گے کیونکہ یہ ہمیشہ کے لیے ہیں)
+            for (let dLink of defaultGroupLinks) {
+                if (dLink.split('?')[0].trim().toLowerCase() === cleanNewLink) {
+                    isRestricted = true;
+                    break;
+                }
+            }
+
+            // فائر بیس والے لنکس پر 48 گھنٹے کا چیک لگائیں
+            if (!isRestricted && snapshot.exists()) {
+                snapshot.forEach((childSnapshot) => {
+                    let existingData = childSnapshot.val();
+                    if (existingData.link) {
+                        let cleanExistingLink = existingData.link.split('?')[0].trim().toLowerCase();
+                        if (cleanExistingLink === cleanNewLink && existingData.timestamp) {
+                            let hoursPassed = (Date.now() - existingData.timestamp) / (1000 * 60 * 60);
+                            if (hoursPassed < 48) {
+                                isRestricted = true;
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (isRestricted) {
+                alert("⏳ This link was already added recently! You can add the same link again only after 48 hours.");
+                submitBtn.innerText = "Submit Live 🚀";
+                return;
+            }
+
+            // اگر 48 گھنٹے گزر چکے ہیں یا نیا لنک ہے تو ڈیٹا سیو کر دیں
+            let groupData = await fetchMetadata(linkInputVal, groupName);
+
             const groupsRef = ref(db, 'whatsapp_groups');
             await push(groupsRef, groupData);
             
@@ -296,6 +332,7 @@
             window.open(ADSTERRA_LINK, '_blank');
             alert("🎉 Your WhatsApp Group or Channel has been successfully published live!");
             loadGroups();
+
         } catch (e) {
             alert("Error saving: " + e.message);
             submitBtn.innerText = "Submit Live 🚀";
@@ -310,4 +347,4 @@
 
 </body>
     </html>
-    
+            
