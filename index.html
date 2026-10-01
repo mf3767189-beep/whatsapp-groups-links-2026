@@ -288,7 +288,6 @@
             let cleanNewLink = linkInputVal.split('?')[0].trim().toLowerCase();
             let isRestricted = false;
 
-            // ڈیفالٹ لنکس چیک کریں (یہ ہمیشہ بلاک رہیں گے کیونکہ یہ ہمیشہ کے لیے ہیں)
             for (let dLink of defaultGroupLinks) {
                 if (dLink.split('?')[0].trim().toLowerCase() === cleanNewLink) {
                     isRestricted = true;
@@ -296,7 +295,6 @@
                 }
             }
 
-            // فائر بیس والے لنکس پر 48 گھنٹے کا چیک لگائیں
             if (!isRestricted && snapshot.exists()) {
                 snapshot.forEach((childSnapshot) => {
                     let existingData = childSnapshot.val();
@@ -318,7 +316,6 @@
                 return;
             }
 
-            // اگر 48 گھنٹے گزر چکے ہیں یا نیا لنک ہے تو ڈیٹا سیو کر دیں
             let groupData = await fetchMetadata(linkInputVal, groupName);
 
             const groupsRef = ref(db, 'whatsapp_groups');
@@ -345,6 +342,9 @@
 <!-- Adsterra Social Bar Code -->
 <script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
 
+<!-- Adsterra Popunder Code -->
+<script src="https://sixstale.com/85/a5/08/85a508f113dc43d47db521c54989dfc0.js"></script>
+
 </body>
     </html>
-            
+    
