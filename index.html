@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Group Links 2026 - Join Active Invite Links Directory</title>
-    <meta name="description" content="Discover and join active WhatsApp group links for crypto, technology, friendship, dating chat, studies, and entertainment. Submit your group for free!">
-    <meta name="keywords" content="whatsapp group links, active whatsapp groups, join whatsapp group, crypto whatsapp group, friendship whatsapp group, dating chat groups, study group links, tech whatsapp groups">
+    <meta name="description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment. Submit your own WhatsApp group for free!">
+    <meta name="keywords" content="whatsapp group links, active whatsapp groups, join whatsapp group, crypto whatsapp group, study group links, tech whatsapp groups">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="WhatsApp Group Links 2026 - Join Active Invite Links">
-    <meta property="og:description" content="Discover and join active WhatsApp group links for crypto, technology, friendship, and chat.">
+    <meta property="og:description" content="Discover and join active WhatsApp group links for crypto, technology, studies, and entertainment.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -41,15 +41,9 @@
 
         .seo-intro { background: var(--bg-card); border: 1px solid #2a3942; border-radius: 12px; padding: 12px 15px; margin-bottom: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.5; text-align: center; }
 
-        .search-box { margin-bottom: 15px; }
+        .search-box { margin-bottom: 20px; }
         .search-box input { width: 100%; padding: 14px 18px; background: var(--bg-input); border: 1px solid #2a3942; border-radius: 12px; color: #fff; font-size: 14px; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .search-box input:focus { border-color: var(--primary); }
-
-        /* Category Filter Buttons */
-        .categories-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; scrollbar-width: none; }
-        .categories-scroll::-webkit-scrollbar { display: none; }
-        .cat-btn { background: var(--bg-input); color: var(--text-muted); border: 1px solid #2a3942; padding: 7px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; white-space: nowrap; transition: 0.2s; }
-        .cat-btn.active, .cat-btn:hover { background: var(--primary); color: #111b21; font-weight: bold; border-color: var(--primary); }
 
         .stats-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 13px; color: var(--text-muted); padding: 0 5px; }
         .stats-bar b { color: var(--primary); }
@@ -90,25 +84,11 @@
     </div>
 
     <div class="seo-intro">
-        Welcome to the ultimate <b>WhatsApp Group & Channel Links Directory</b>. Find and join active groups for Dating, Friendship, Crypto, Tech, and Study communities.
+        Welcome to the ultimate <b>WhatsApp Group & Channel Links Directory</b>. Find and join active groups for community chatting, learning, and sharing. You can also list your group or channel instantly!
     </div>
 
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="🔍 Search groups & channels by name..." onkeyup="filterGroups()">
-    </div>
-
-    <!-- Category Filter Bar -->
-    <div class="categories-scroll">
-        <button class="cat-btn active" onclick="filterCategory('all', this)">All Groups</button>
-        <button class="cat-btn" onclick="filterCategory('dating', this)">💖 Dating & Chat</button>
-        <button class="cat-btn" onclick="filterCategory('friendship', this)">🤝 Friendship</button>
-        <button class="cat-btn" onclick="filterCategory('crypto', this)">🪙 Crypto</button>
-        <button class="cat-btn" onclick="filterCategory('tech', this)">💻 Tech</button>
-        <button class="cat-btn" onclick="filterCategory('study', this)">📚 Study</button>
-        <button class="cat-btn" onclick="filterCategory('islamic', this)">☪️ Islamic</button>
-        <button class="cat-btn" onclick="filterCategory('game', this)">🎮 Gaming</button>
-        <button class="cat-btn" onclick="filterCategory('job', this)">💼 Jobs</button>
-        <button class="cat-btn" onclick="filterCategory('videos', this)">🎬 Videos & Fun</button>
     </div>
 
     <div class="stats-bar">
@@ -130,7 +110,7 @@
 <div id="addGroupModal" class="modal hidden">
     <div class="modal-content" style="text-align: left;">
         <h3>🚀 Add WhatsApp Group or Channel</h3>
-        <input type="text" id="groupNameInput" placeholder="Enter Name (e.g. Friendship Club 2026)...">
+        <input type="text" id="groupNameInput" placeholder="Enter Custom Name (e.g. Crypto Signals)...">
         <input type="url" id="groupLinkInput" placeholder="WhatsApp Link (chat.whatsapp.com / whatsapp.com/channel...)">
         
         <div class="modal-btns">
@@ -175,9 +155,6 @@
         "https://chat.whatsapp.com/EbCqdNjnA00KgbMnOtLOPW?s=cl&p=a&mlu=4&ilr=4"
     ];
 
-    let globalGroupsList = [];
-    let currentCategory = 'all';
-
     async function fetchMetadata(link, customTitle = "") {
         let title = customTitle || "WhatsApp Community";
         let dp = "";
@@ -219,8 +196,8 @@
         let defaultGroupsPromises = defaultGroupLinks.map(link => fetchMetadata(link));
         let resolvedDefaultGroups = await Promise.all(defaultGroupsPromises);
 
-        globalGroupsList = [...firebaseGroups, ...resolvedDefaultGroups];
-        renderGroups(globalGroupsList);
+        let allGroups = [...firebaseGroups, ...resolvedDefaultGroups];
+        renderGroups(allGroups);
     }
 
     function renderGroups(list) {
@@ -258,36 +235,6 @@
         });
     }
 
-    window.filterCategory = function(cat, btnElement) {
-        currentCategory = cat;
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        btnElement.classList.add('active');
-
-        applyFilters();
-    }
-
-    window.filterGroups = function() {
-        applyFilters();
-    }
-
-    function applyFilters() {
-        let query = document.getElementById('searchInput').value.toLowerCase();
-        
-        let filtered = globalGroupsList.filter(g => {
-            let title = g.title.toLowerCase();
-            let matchesSearch = title.includes(query);
-            let matchesCat = true;
-
-            if (currentCategory !== 'all') {
-                matchesCat = title.includes(currentCategory);
-            }
-
-            return matchesSearch && matchesCat;
-        });
-
-        renderGroups(filtered);
-    }
-
     window.handleJoinClick = function(groupUrl) {
         let clickState = localStorage.getItem('click_toggle_state');
         
@@ -298,6 +245,19 @@
             localStorage.setItem('click_toggle_state', 'group');
             window.open(groupUrl, '_blank');
         }
+    }
+
+    function filterGroups() {
+        let query = document.getElementById('searchInput').value.toLowerCase();
+        let cardElements = document.querySelectorAll('.group-card');
+        cardElements.forEach(card => {
+            let titleText = card.querySelector('.group-title').innerText.toLowerCase();
+            if(titleText.includes(query)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
     }
 
     window.openModal = function() { document.getElementById('addGroupModal').classList.remove('hidden'); }
@@ -362,7 +322,7 @@
             await push(groupsRef, groupData);
             
             document.getElementById('groupNameInput').value = '';
-            document.getElementById('groupLinkInput').value = '',
+            document.getElementById('groupLinkInput').value = '';
             submitBtn.innerText = "Submit Live 🚀";
             closeModal();
 
@@ -371,4 +331,19 @@
             loadGroups();
 
         } catch (e) {
-            aler
+            alert("Error saving: " + e.message);
+            submitBtn.innerText = "Submit Live 🚀";
+        }
+    }
+
+    window.onload = loadGroups;
+</script>
+
+<!-- Adsterra Social Bar Code -->
+<script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
+
+<!-- Adsterra Popunder Code -->
+<script src="https://sixstale.com/85/a5/08/85a508f113dc43d47db521c54989dfc0.js"></script>
+
+</body>
+    </html>
