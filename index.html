@@ -196,8 +196,8 @@
             <button class="btn-close" onclick="closeModal()">Cancel</button>
         </div>
     </div>
-                </div>
-                  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <script>
@@ -296,29 +296,23 @@
             return;
         }
 
-        list.forEach((g) => {
+        list.forEach((g, index) => {
             let card = document.createElement('div');
             card.className = 'group-card';
             
-            let inviteCode = "";
-            if (g.link && g.link.includes("chat.whatsapp.com/")) {
-                inviteCode = g.link.split("chat.whatsapp.com/")[1].split("?")[0];
-            }
-
-            let dpHtml = `<div class="whatsapp-fallback">
+            let dpHtml = `<div class="whatsapp-fallback" id="dp-box-${index}">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="#008055"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2z"/></svg>
             </div>`;
 
-            if (inviteCode) {
-                dpHtml = `<img src="https://pps.whatsapp.net/v/t61.24694-24/459740173_1033281438202517_6285223329707248834_n.jpg?ccb=11-4&oh=01_Q5AaI-Gh...&oe=65..." class="group-dp-img" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';" alt="DP">`;
-            }
-
             if (g.dp && g.dp.trim() !== "" && g.dp.startsWith('http')) {
                 dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP">`;
+            } else if (g.link && g.link.includes("chat.whatsapp.com/")) {
+                // एपीआई के ज़रिये लिंक से डीपी फैच करने वाला कोड
+                fetchGroupDP(g.link, index);
             }
 
             card.innerHTML = `
-                <div class="group-dp-container">${dpHtml}</div>
+                <div class="group-dp-container" id="dp-container-${index}">${dpHtml}</div>
                 <div class="group-info">
                     <span class="group-title">${g.title}</span>
                     <button onclick="handleJoinClick('${g.link}')" class="btn-join">Join Now ↗</button>
@@ -326,6 +320,23 @@
             `;
             container.appendChild(card);
         });
+    }
+
+    // एपीआई से ग्रुप की फोटो निकालने वाला फंक्शन
+    async function fetchGroupDP(inviteUrl, index) {
+        try {
+            let response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(inviteUrl)}`);
+            let data = await response.json();
+            if (data && data.status === 'success' && data.data && data.data.image && data.data.image.url) {
+                let imageUrl = data.data.image.url;
+                let container = document.getElementById(`dp-container-${index}`);
+                if (container) {
+                    container.innerHTML = `<img src="${imageUrl}" class="group-dp-img" alt="DP">`;
+                }
+            }
+        } catch (err) {
+            console.log("DP fetch error: ", err);
+        }
     }
 
     window.filterCategory = function(cat, btnElement) {
@@ -444,4 +455,5 @@
 <script src="https://sixstale.com/85/a5/08/85a508f113dc43d47db521c54989dfc0.js"></script>
 
 </body>
-</html>
+    </html>
+    
