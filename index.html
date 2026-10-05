@@ -117,7 +117,7 @@
             <button class="cat-btn" onclick="filterCategory('crypto', this)">🪙 Crypto</button>
             <button class="cat-btn" onclick="filterCategory('tech', this)">💻 Tech</button>
             <button class="cat-btn" onclick="filterCategory('study', this)">📚 Study</button>
-            <button class="cat-btn" onclick="filterCategory('islamic', this)">☪️️ Islamic</button>
+            <button class="cat-btn" onclick="filterCategory('islamic', this)">☪ Islamic</button>
             <button class="cat-btn" onclick="filterCategory('game', this)">🎮 Gaming</button>
             <button class="cat-btn" onclick="filterCategory('job', this)">💼 Jobs</button>
             <button class="cat-btn" onclick="filterCategory('videos', this)">🎬 Videos</button>
@@ -197,7 +197,7 @@
         </div>
     </div>
                 </div>
-            <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+                  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <script>
@@ -300,11 +300,20 @@
             let card = document.createElement('div');
             card.className = 'group-card';
             
+            let inviteCode = "";
+            if (g.link && g.link.includes("chat.whatsapp.com/")) {
+                inviteCode = g.link.split("chat.whatsapp.com/")[1].split("?")[0];
+            }
+
             let dpHtml = `<div class="whatsapp-fallback">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="#008055"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.35-1.4c1.42.77 3.03 1.18 4.64 1.18 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2z"/></svg>
             </div>`;
 
-            if (g.dp && g.dp.startsWith('http')) {
+            if (inviteCode) {
+                dpHtml = `<img src="https://pps.whatsapp.net/v/t61.24694-24/459740173_1033281438202517_6285223329707248834_n.jpg?ccb=11-4&oh=01_Q5AaI-Gh...&oe=65..." class="group-dp-img" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';" alt="DP">`;
+            }
+
+            if (g.dp && g.dp.trim() !== "" && g.dp.startsWith('http')) {
                 dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP">`;
             }
 
