@@ -196,8 +196,8 @@
             <button class="btn-close" onclick="closeModal()">Cancel</button>
         </div>
     </div>
-</div>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+            </div>
+               <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <script>
@@ -215,7 +215,8 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    const ADSTERRA_LINK = "https://sixstale.com/qk9vg43e?key=5e867859b7be6d6d85df7ed6255eafab";
+    // आपका नया Smart Link
+    const ADSTERRA_LINK = "https://auctionr.org/4/5e867859b7be6d6d85df7ed6255eafab";
 
     let globalGroupsList = [
         { title: "Active Community Hub 2026", link: "https://chat.whatsapp.com/DvorrDWc5H2JBtNORZdFKz?s=cl&p=a&mlu=4&ilr=4", dp: "" },
@@ -307,7 +308,6 @@
             if (g.dp && g.dp.trim() !== "" && g.dp.startsWith('http')) {
                 dpHtml = `<img src="${g.dp}" class="group-dp-img" alt="DP">`;
             } else if (g.link && g.link.includes("chat.whatsapp.com/")) {
-                // एपीआई के ज़रिये लिंक से डीपी फैच करने वाला कोड
                 fetchGroupDP(g.link, index);
             }
 
@@ -322,7 +322,6 @@
         });
     }
 
-    // एपीआई से ग्रुप की फोटो निकालने वाला फंक्शन
     async function fetchGroupDP(inviteUrl, index) {
         try {
             let response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(inviteUrl)}`);
@@ -451,9 +450,9 @@
     };
 </script>
 
-<script src="https://sixstale.com/28/17/cb/2817cb9c81d6230d9d98e257f4e88359.js"></script>
-<script src="https://sixstale.com/85/a5/08/85a508f113dc43d47db521c54989dfc0.js"></script>
+<!-- आपके नए Popunder और Social Bar कोड्स -->
+<script data-cfasync="false" src="https://abscloud.org/1/85a508f113dc43d47db521c54989dfc0"></script>
+<script data-cfasync="false" src="https://bauval.org/14/2817cb9c81d6230d9d98e257f4e88359"></script>
 
 </body>
-    </html>
-    
+</html>
